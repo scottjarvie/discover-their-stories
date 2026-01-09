@@ -67,7 +67,7 @@ pnpm install
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see the app.
+Open [http://localhost:3443](http://localhost:3443) to see the app.
 
 ### Browser Extension Setup
 
