@@ -1,36 +1,214 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tell Their Stories
 
-## Getting Started
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-First, run the development server:
+**A Family History AI Toolset** - Go beyond names and dates. Research deeply, tell stories, create content.
+
+![Tell Their Stories Homepage](https://img.shields.io/badge/Status-Active%20Development-brightgreen)
+
+## 🌟 Overview
+
+Tell Their Stories is a platform for family historians who want to go beyond collecting names and dates. It transforms genealogical data into compelling narratives using AI assistance.
+
+### Key Principles
+
+- **🔍 Research Depth** - Understand context, not just collect facts
+- **📖 Storytelling First** - Turn data into compelling narratives  
+- **🎨 Content Creation** - Photos, documents, timelines, and shareable stories
+- **🤖 AI Assistance** - Leverage modern AI for analysis and synthesis
+- **🔒 Privacy First** - All data stays local on your computer
+
+## ✨ Features
+
+### Source Documentation Tool (Available Now)
+
+Extract and document FamilySearch sources with AI-powered analysis. Creates two types of documents:
+
+| Document Type | Description |
+|--------------|-------------|
+| **Raw Evidence Document** | Complete, lossless capture of all source data (deterministic, no AI) |
+| **Contextualized Dossier** | AI-assisted synthesis that identifies patterns, conflicts, and research opportunities |
+
+#### How It Works
+
+1. **Extract** - Use the browser extension to capture sources from FamilySearch
+2. **Import** - Upload the Evidence Pack JSON to the app
+3. **Process** - Run 3-stage AI analysis (Normalize → Cluster → Synthesize)
+4. **Export** - Download raw documents and contextualized dossiers
+
+### Coming Soon
+
+- 📝 **Story Writer** - AI-assisted narrative generation from documented facts
+- 📷 **Photo Analyzer** - Extract context and dates from old photographs
+- 📅 **Timeline Builder** - Visual timelines synthesized from sources
+- 🎯 **Research Planner** - Track goals with AI-powered suggestions
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- pnpm (recommended) or npm
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Clone the repository
+git clone https://github.com/scottjarvie/tell-their-stories.git
+cd tell-their-stories
+
+# Install dependencies
+pnpm install
+
+# Run development server
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Browser Extension Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The browser extension is located in the `/extension` folder:
 
-## Learn More
+1. Open Chrome and navigate to `chrome://extensions/`
+2. Enable "Developer mode" (toggle in top right)
+3. Click "Load unpacked" and select the `/extension` folder
+4. Navigate to a FamilySearch person's sources page (e.g., `familysearch.org/tree/person/sources/XXXX-XXX`)
+5. Click the extension icon to start extraction
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+tell-their-stories/
+├── app/                    # Next.js App Router pages
+│   ├── app/               # App routes (dashboard, tools)
+│   ├── features/          # Feature marketing pages
+│   ├── about/             # About page
+│   ├── roadmap/           # Roadmap page
+│   └── api/               # API routes
+├── components/            # React components
+│   ├── ui/                # ShadCN UI components
+│   ├── layout/            # Layout components (nav, sidebar, footer)
+│   └── marketing/         # Marketing page components
+├── features/              # Feature modules
+│   └── source-docs/       # Source Documentation Tool
+│       ├── components/    # Feature-specific components
+│       └── lib/           # Schemas, generators, utils
+├── lib/                   # Shared utilities
+│   ├── storage/           # Local file storage layer
+│   └── ai/                # OpenRouter integration
+├── extension/             # Chrome browser extension (MV3)
+│   ├── content/           # Content scripts for extraction
+│   ├── popup/             # Extension popup UI
+│   └── lib/               # Evidence Pack schema
+└── data/                  # Local storage (gitignored)
+    └── people/            # Extracted person data
+        └── {personId}/    # Per-person folder
+            └── runs/      # Versioned extraction runs
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ⚙️ Configuration
 
-## Deploy on Vercel
+### OpenRouter API Key
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To use in-app AI processing:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Get an API key from [OpenRouter](https://openrouter.ai/keys)
+2. Open **Settings** in the app (`/app/settings`)
+3. Enter your API key and click **Save**
+4. Select your preferred AI model (Claude, GPT-4o, Gemini, etc.)
+
+### Privacy Controls
+
+- **Auto-redact sensitive info** - Automatically removes emails, phone numbers, addresses before AI processing
+- **Living person detection** - Warns when data may contain living individuals
+- **Original vs Redacted toggle** - Choose which version to send to AI
+
+### Admin Mode
+
+For development/testing, enable Admin Mode in Settings:
+- Faster extraction pacing (no delays)
+- No expansion caps
+- Testing features enabled
+
+## 🛠️ Tech Stack
+
+| Category | Technology |
+|----------|------------|
+| Framework | Next.js 16 (App Router, Turbopack) |
+| Language | TypeScript 5 |
+| Styling | Tailwind CSS 4 |
+| Components | ShadCN UI |
+| Validation | Zod |
+| AI Integration | OpenRouter API |
+| Storage | Local filesystem (JSON, Markdown) |
+| Extension | Chrome Manifest V3 |
+
+## 🔒 Data Privacy
+
+Your data stays with you:
+
+- ✅ All data stored locally on your computer
+- ✅ Nothing sent to external servers without explicit action
+- ✅ Sensitive information auto-redacted before AI processing
+- ✅ Export everything in readable formats (JSON, Markdown)
+- ✅ No account required, no tracking
+
+## 📋 Compliance Note
+
+This tool is designed to work with FamilySearch in a compliance-friendly manner:
+
+- ✅ User-initiated extraction only (no automated scraping)
+- ✅ Paced operations with built-in delays
+- ✅ Read-only behavior (no modifications to FamilySearch)
+- ✅ Clear consent before data capture
+- ✅ Follows FamilySearch plugin guidance
+
+Please ensure you comply with [FamilySearch's Terms of Use](https://www.familysearch.org/legal/terms) when using this tool.
+
+## 🗺️ Roadmap
+
+### Phase 1: Foundation ✅
+- [x] Platform setup (Next.js, Tailwind, ShadCN)
+- [x] Marketing website
+- [x] App dashboard with sidebar navigation
+- [x] Settings page with API key management
+- [x] Browser extension skeleton
+
+### Phase 2: Source Documentation (Current)
+- [x] Evidence Pack schema and validation
+- [x] Import/export workflow
+- [x] Raw document generator
+- [x] AI processing pipeline (3 stages)
+- [x] Redaction and privacy controls
+- [ ] Full extension extraction logic
+- [ ] Contextualized dossier generation
+
+### Phase 3: Storytelling
+- [ ] Story Writer tool
+- [ ] Narrative templates
+- [ ] Timeline visualization
+
+### Phase 4: Advanced Features
+- [ ] Photo Analyzer
+- [ ] Research Planner
+- [ ] Collaboration features
+
+## 📄 License
+
+MIT License - See [LICENSE](LICENSE) for details.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📧 Contact
+
+Created by [@scottjarvie](https://github.com/scottjarvie)
+
+---
+
+*Tell Their Stories - Because every ancestor has a story worth telling.*
