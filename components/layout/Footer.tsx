@@ -34,9 +34,12 @@ export function Footer() {
           </div>
 
           {/* Links */}
-          <nav className="flex items-center gap-8">
+          <nav className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
             <Link href="/features" className="hover:text-white transition-colors">
               Features
+            </Link>
+            <Link href="/extension" className="hover:text-white transition-colors">
+              Extension
             </Link>
             <Link href="/about" className="hover:text-white transition-colors">
               About
