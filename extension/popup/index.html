@@ -3,66 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tell Their Stories</title>
+  <title>Tell Their Stories - Source Extractor</title>
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     body {
-      width: 360px;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #fafaf9;
+      width: 360px;
+      background: #faf8f5;
       color: #1c1917;
     }
 
-    .container {
-      padding: 16px;
-    }
-
-    /* Header */
     .header {
+      background: linear-gradient(135deg, #b45309 0%, #92400e 100%);
+      color: white;
+      padding: 16px;
       display: flex;
       align-items: center;
       gap: 12px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid #e7e5e4;
-      margin-bottom: 16px;
     }
 
-    .logo {
+    .header-icon {
       width: 32px;
       height: 32px;
-      background: #b45309;
+      background: rgba(255,255,255,0.2);
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .logo svg {
-      width: 20px;
-      height: 20px;
-      color: white;
-    }
-
-    .title {
+    .header h1 {
       font-size: 16px;
       font-weight: 600;
     }
 
-    .admin-badge {
-      background: #ea580c;
-      color: white;
+    .header p {
+      font-size: 12px;
+      opacity: 0.9;
+    }
+
+    #adminBadge {
+      display: none;
+      background: #fbbf24;
+      color: #78350f;
       font-size: 10px;
       padding: 2px 6px;
       border-radius: 4px;
+      font-weight: 600;
       margin-left: auto;
     }
 
-    /* States */
+    .content {
+      padding: 16px;
+    }
+
     .state {
       display: none;
     }
@@ -71,90 +70,101 @@
       display: block;
     }
 
-    /* Not On Page State */
+    /* Not on page state */
     .not-on-page {
       text-align: center;
-      padding: 24px;
+      padding: 24px 16px;
+    }
+
+    .not-on-page-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 16px;
+      background: #e7e5e4;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .not-on-page h2 {
+      font-size: 14px;
+      margin-bottom: 8px;
     }
 
     .not-on-page p {
+      font-size: 12px;
       color: #78716c;
-      margin-bottom: 12px;
+      line-height: 1.5;
     }
 
-    .not-on-page a {
-      color: #b45309;
-      text-decoration: none;
+    .not-on-page code {
+      display: block;
+      margin-top: 12px;
+      padding: 8px;
+      background: #f5f5f4;
+      border-radius: 4px;
+      font-size: 11px;
+      word-break: break-all;
     }
 
-    .not-on-page a:hover {
-      text-decoration: underline;
-    }
-
-    /* Ready State */
+    /* Ready state */
     .person-info {
       background: white;
       border: 1px solid #e7e5e4;
-      border-radius: 12px;
+      border-radius: 8px;
       padding: 16px;
       margin-bottom: 16px;
     }
 
-    .person-name {
-      font-size: 18px;
+    #personName {
+      font-size: 16px;
       font-weight: 600;
       margin-bottom: 4px;
     }
 
-    .person-dates {
+    #personDates {
+      font-size: 13px;
       color: #78716c;
-      font-size: 14px;
+      margin-bottom: 8px;
     }
 
-    .source-count {
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px solid #e7e5e4;
-      color: #57534e;
-      font-size: 14px;
+    #sourceCount {
+      font-size: 12px;
+      color: #b45309;
+      font-weight: 500;
     }
 
-    /* Consent */
     .consent-box {
       background: #fef3c7;
       border: 1px solid #fcd34d;
-      border-radius: 12px;
+      border-radius: 8px;
       padding: 12px;
       margin-bottom: 16px;
-      font-size: 13px;
-      color: #92400e;
     }
 
-    .consent-checkbox {
+    .consent-box label {
       display: flex;
       align-items: flex-start;
       gap: 8px;
-      margin-top: 8px;
+      font-size: 12px;
+      line-height: 1.5;
+      cursor: pointer;
     }
 
-    .consent-checkbox input {
-      margin-top: 3px;
+    .consent-box input[type="checkbox"] {
+      margin-top: 2px;
     }
 
-    /* Buttons */
     .btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
       width: 100%;
-      padding: 12px 16px;
+      padding: 12px;
       border: none;
       border-radius: 8px;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: all 0.2s;
     }
 
     .btn-primary {
@@ -162,7 +172,7 @@
       color: white;
     }
 
-    .btn-primary:hover {
+    .btn-primary:hover:not(:disabled) {
       background: #92400e;
     }
 
@@ -172,27 +182,30 @@
     }
 
     .btn-secondary {
-      background: white;
+      background: #f5f5f4;
+      color: #44403c;
       border: 1px solid #e7e5e4;
-      color: #57534e;
     }
 
     .btn-secondary:hover {
-      background: #f5f5f4;
+      background: #e7e5e4;
     }
 
-    .btn-danger {
-      background: #dc2626;
-      color: white;
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #e7e5e4;
+      color: #44403c;
     }
 
-    .btn-danger:hover {
-      background: #b91c1c;
-    }
-
-    /* Progress */
+    /* Extracting state */
     .progress-container {
       margin-bottom: 16px;
+    }
+
+    #progressStatus {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 8px;
     }
 
     .progress-bar {
@@ -203,39 +216,30 @@
       margin-bottom: 8px;
     }
 
-    .progress-fill {
+    #progressFill {
       height: 100%;
       background: #b45309;
-      transition: width 0.3s;
+      border-radius: 4px;
+      transition: width 0.3s ease;
+      width: 0%;
     }
 
-    .progress-text {
-      font-size: 13px;
+    #progressText {
+      font-size: 12px;
       color: #78716c;
     }
 
-    .progress-status {
-      font-size: 14px;
-      color: #57534e;
-      margin-bottom: 8px;
-    }
-
-    /* Complete */
-    .success-icon {
+    /* Complete state */
+    .complete-icon {
       width: 48px;
       height: 48px;
-      background: #22c55e;
+      margin: 0 auto 16px;
+      background: #dcfce7;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 16px;
-    }
-
-    .success-icon svg {
-      width: 24px;
-      height: 24px;
-      color: white;
+      color: #16a34a;
     }
 
     .complete-text {
@@ -243,14 +247,14 @@
       margin-bottom: 16px;
     }
 
-    .complete-text h3 {
-      font-size: 18px;
+    .complete-text h2 {
+      font-size: 16px;
       margin-bottom: 4px;
     }
 
-    .complete-text p {
+    #completeStats {
+      font-size: 13px;
       color: #78716c;
-      font-size: 14px;
     }
 
     .export-buttons {
@@ -259,29 +263,54 @@
       gap: 8px;
     }
 
-    /* Error */
-    .error-box {
-      background: #fef2f2;
-      border: 1px solid #fecaca;
-      border-radius: 12px;
-      padding: 12px;
-      margin-bottom: 16px;
-      color: #dc2626;
-      font-size: 13px;
+    .export-buttons .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
 
-    /* Footer */
+    /* Error state */
+    .error-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 16px;
+      background: #fee2e2;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #dc2626;
+    }
+
+    .error-text {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .error-text h2 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    #errorMessage {
+      font-size: 13px;
+      color: #dc2626;
+      background: #fee2e2;
+      padding: 8px;
+      border-radius: 4px;
+    }
+
     .footer {
-      margin-top: 16px;
-      padding-top: 16px;
+      padding: 12px 16px;
       border-top: 1px solid #e7e5e4;
       text-align: center;
     }
 
     .footer a {
+      font-size: 11px;
       color: #78716c;
       text-decoration: none;
-      font-size: 12px;
     }
 
     .footer a:hover {
@@ -290,80 +319,88 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Header -->
-    <div class="header">
-      <div class="logo">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+  <!-- Header -->
+  <div class="header">
+    <div class="header-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+        <polyline points="10 9 9 9 8 9"/>
+      </svg>
+    </div>
+    <div>
+      <h1>Tell Their Stories</h1>
+      <p>Source Extractor</p>
+    </div>
+    <div id="adminBadge">ADMIN</div>
+  </div>
+
+  <div class="content">
+    <!-- State: Not on FamilySearch sources page -->
+    <div id="notOnPage" class="state active not-on-page">
+      <div class="not-on-page-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#78716c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="8" x2="12" y2="12"/>
+          <line x1="12" y1="16" x2="12.01" y2="16"/>
         </svg>
       </div>
-      <span class="title">Tell Their Stories</span>
-      <span class="admin-badge" id="adminBadge" style="display: none;">ADMIN</span>
+      <h2>Navigate to a Sources Page</h2>
+      <p>This extension works on FamilySearch person source pages. Please navigate to:</p>
+      <code>familysearch.org/tree/person/sources/XXXX-XXX</code>
     </div>
 
-    <!-- Not On Page State -->
-    <div class="state" id="notOnPage">
-      <div class="not-on-page">
-        <p>Navigate to a FamilySearch person's Sources page to extract data.</p>
-        <a href="https://www.familysearch.org" target="_blank">Go to FamilySearch →</a>
-      </div>
-    </div>
-
-    <!-- Ready State -->
-    <div class="state" id="ready">
+    <!-- State: Ready to extract -->
+    <div id="ready" class="state">
       <div class="person-info">
-        <div class="person-name" id="personName">Loading...</div>
-        <div class="person-dates" id="personDates"></div>
-        <div class="source-count" id="sourceCount"></div>
+        <div id="personName">Loading...</div>
+        <div id="personDates"></div>
+        <div id="sourceCount">0 sources available</div>
       </div>
 
       <div class="consent-box">
-        <strong>Before you extract:</strong>
-        <p style="margin-top: 4px;">This tool reads publicly visible data from this page. Data is stored locally on your computer.</p>
-        <label class="consent-checkbox">
+        <label>
           <input type="checkbox" id="consentCheck">
-          <span>I understand and want to proceed</span>
+          <span>I understand this will interact with the page to expand indexed information. I will use this responsibly and in accordance with FamilySearch's Terms of Use.</span>
         </label>
       </div>
 
-      <button class="btn btn-primary" id="extractBtn" disabled>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-          <polyline points="7 10 12 15 17 10"/>
-          <line x1="12" y1="15" x2="12" y2="3"/>
-        </svg>
+      <button id="extractBtn" class="btn btn-primary" disabled>
         Extract Sources
       </button>
     </div>
 
-    <!-- Extracting State -->
-    <div class="state" id="extracting">
-      <div class="progress-status" id="progressStatus">Initializing...</div>
+    <!-- State: Extracting -->
+    <div id="extracting" class="state">
       <div class="progress-container">
+        <div id="progressStatus">Starting extraction...</div>
         <div class="progress-bar">
-          <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+          <div id="progressFill"></div>
         </div>
-        <div class="progress-text" id="progressText">0 / 0 sources</div>
+        <div id="progressText">0 / 0 sources</div>
       </div>
-      <button class="btn btn-danger" id="cancelBtn">
+
+      <button id="cancelBtn" class="btn btn-secondary">
         Cancel Extraction
       </button>
     </div>
 
-    <!-- Complete State -->
-    <div class="state" id="complete">
-      <div class="success-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- State: Complete -->
+    <div id="complete" class="state">
+      <div class="complete-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="20 6 9 17 4 12"/>
         </svg>
       </div>
       <div class="complete-text">
-        <h3>Extraction Complete!</h3>
-        <p id="completeStats">24 sources extracted</p>
+        <h2>Extraction Complete!</h2>
+        <div id="completeStats">0 sources extracted</div>
       </div>
+
       <div class="export-buttons">
-        <button class="btn btn-primary" id="downloadBtn">
+        <button id="downloadBtn" class="btn btn-primary">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
             <polyline points="7 10 12 15 17 10"/>
@@ -371,33 +408,41 @@
           </svg>
           Download JSON
         </button>
-        <button class="btn btn-secondary" id="copyBtn">
+        <button id="copyBtn" class="btn btn-secondary">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
           </svg>
           Copy to Clipboard
         </button>
-        <button class="btn btn-secondary" id="newExtractBtn">
+        <button id="newExtractBtn" class="btn btn-outline">
           Start New Extraction
         </button>
       </div>
     </div>
 
-    <!-- Error State -->
-    <div class="state" id="error">
-      <div class="error-box" id="errorMessage">
-        An error occurred during extraction.
+    <!-- State: Error -->
+    <div id="error" class="state">
+      <div class="error-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="15" y1="9" x2="9" y2="15"/>
+          <line x1="9" y1="9" x2="15" y2="15"/>
+        </svg>
       </div>
-      <button class="btn btn-secondary" id="retryBtn">
+      <div class="error-text">
+        <h2>Extraction Failed</h2>
+        <div id="errorMessage">An error occurred during extraction.</div>
+      </div>
+
+      <button id="retryBtn" class="btn btn-primary">
         Try Again
       </button>
     </div>
+  </div>
 
-    <!-- Footer -->
-    <div class="footer">
-      <a href="http://localhost:3000/app" target="_blank">Open Tell Their Stories App</a>
-    </div>
+  <div class="footer">
+    <a href="http://localhost:3443/app/source-docs" target="_blank">Open Tell Their Stories App →</a>
   </div>
 
   <script src="popup.js"></script>
