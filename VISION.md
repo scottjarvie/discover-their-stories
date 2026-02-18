@@ -1,0 +1,187 @@
+# Tell Their Stories - Vision & Goals
+
+*Last updated: 2026-02-02*
+
+## The Big Picture
+
+**Tell Their Stories** isn't just genealogy software. It's about transforming family history from a names-and-dates collection exercise into a deep, meaningful connection with ancestors as *real people*.
+
+### Core Philosophy
+
+> "Go beyond names and dates. Research deeply, tell stories, create content."
+
+The goal isn't just to find records or add names to a family tree. It's to:
+
+- **Understand who your ancestors were** as people
+- **Paint pictures of their lives** through context and storytelling
+- **Connect emotionally** with your heritage
+- **Share their stories** in compelling ways
+
+---
+
+## What We're Building
+
+A suite of AI-powered tools that help people:
+
+### 1. Deep Research
+- Understand historical context (not just individual records)
+- Research the *places* ancestors lived — what was that town like? What industries existed?
+- Research their *time periods* — what was happening in the world?
+- Research their *religions* — what did they believe? How did they practice?
+- Research their *occupations* — what did a cooper or a milliner actually do?
+
+### 2. Contextual Understanding
+- What was life like for them day-to-day?
+- What challenges did their generation face?
+- What opportunities did they have (or lack)?
+- What historical events shaped their lives?
+
+### 3. Storytelling & Content Creation
+- **Stories** — Narrative accounts of ancestors' lives
+- **Books** — Compilations of family histories
+- **Podcasts** — Audio storytelling about ancestors
+- **Timelines** — Visual representations of lives in context
+- **Photo analysis** — Understanding and dating old photographs
+
+### 4. AI-Assisted Discovery
+- Use AI to synthesize information from multiple sources
+- Identify patterns, conflicts, and research opportunities
+- Generate narrative drafts from raw evidence
+- Deep research assistance for historical context
+
+---
+
+## Guiding Principles
+
+### Privacy First
+- All data stays local on the user's computer
+- No accounts required
+- User controls what (if anything) goes to AI services
+- Sensitive information can be redacted before AI processing
+
+### Respectful of Sources
+- FamilySearch-compliant (no scraping, user-initiated only)
+- Proper attribution and citation
+- Distinguish between evidence and conclusions
+
+### Accessible
+- Tools should be usable by regular people, not just tech experts
+- Clear explanations of what AI is doing
+- Transparent about AI limitations
+
+### LDS Context
+- Many users will be members doing temple work
+- That's valid, but it's not the *only* goal
+- The deeper goal is connection and understanding
+- Temple names can be a byproduct of deeper research
+
+---
+
+## Current State (Feb 2026)
+
+The project has a foundation but is largely a **blank slate** for experimentation:
+
+### Built So Far
+- ✅ Next.js marketing site and app shell
+- ✅ Chrome extension skeleton for FamilySearch extraction
+- ✅ Evidence Pack schema for structured data
+- ✅ AI processing pipeline design (OpenRouter)
+- ✅ Settings page with API key management
+- ✅ Local file storage system
+
+### Not Yet Built
+- ⏳ Full extraction logic in the extension
+- ⏳ Contextualized dossier generation
+- ⏳ Story Writer tool
+- ⏳ Photo Analyzer
+- ⏳ Timeline Builder
+- ⏳ Research Planner
+- ⏳ Podcast/audio features
+
+---
+
+## Tool Ideas to Explore
+
+*These are experiments to try — not all will work or ship*
+
+### Source Documentation Tool (in progress)
+Extract FamilySearch sources → AI analysis → Evidence Documents + Dossiers
+
+### Story Generator
+Input: Evidence documents, family tree data
+Output: Narrative stories suitable for sharing or publishing
+
+### Historical Context Engine
+Input: Place + Date
+Output: Deep research on what life was like (economy, religion, politics, daily life)
+
+### Photo Dating & Analysis
+Input: Old photograph
+Output: Estimated date range, clothing analysis, location clues, context
+
+### Timeline Synthesizer
+Input: Multiple sources for one person
+Output: Visual timeline with historical events overlaid
+
+### Podcast Script Generator
+Input: Family stories or research
+Output: Podcast-ready scripts with narrative structure
+
+### Research Planner
+Input: What you know about an ancestor
+Output: Suggested research paths, record types to check, questions to answer
+
+### "Day in the Life" Generator
+Input: Ancestor's occupation, location, time period
+Output: Vivid description of what a typical day might have looked like
+
+---
+
+## Technical Approach
+
+### AI Integration
+- **OpenRouter** for flexibility across models (Claude, GPT-4o, Gemini, etc.)
+- User provides their own API key
+- Redaction options for privacy
+
+### Local-First Architecture
+- Data stored in local filesystem (JSON, Markdown)
+- No database required
+- Easy to backup and export
+
+### Browser Extension
+- Chrome Manifest V3
+- Extracts data from FamilySearch with user consent
+- Paced operations to respect FamilySearch
+
+### Future Possibilities
+- AI agents that can do multi-step research
+- Integration with other genealogy sites (Ancestry, FindAGrave, etc.)
+- Collaboration features for family groups
+- Mobile app companion
+
+---
+
+## Success Metrics
+
+Not vanity metrics — real impact:
+
+- Do users feel more connected to their ancestors?
+- Are they discovering things they didn't know?
+- Are the stories compelling enough to share with family?
+- Does the tool save time while improving depth?
+
+---
+
+## Notes & Ideas
+
+*Space for ongoing thoughts*
+
+- Consider integration with Hive blockchain for publishing stories
+- AI News Daily workflow patterns might inform content generation here
+- Voice narration for stories could be powerful (ElevenLabs TTS)
+- Could generate "ancestor trading cards" with AI images
+
+---
+
+*This document will evolve as we experiment and learn what works.*

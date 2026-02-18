@@ -93,6 +93,13 @@ tell-their-stories/
 │   ├── ui/                # ShadCN UI components
 │   ├── layout/            # Layout components (nav, sidebar, footer)
 │   └── marketing/         # Marketing page components
+├── convex/                # Convex backend (GEDCOM X data model)
+│   ├── schema.ts          # Data model following GEDCOM X
+│   ├── persons.ts         # Person operations
+│   ├── relationships.ts   # Relationship operations
+│   ├── events.ts          # Event operations
+│   ├── sources.ts         # Source/citation operations
+│   └── helpers.ts         # Helper functions
 ├── features/              # Feature modules
 │   └── source-docs/       # Source Documentation Tool
 │       ├── components/    # Feature-specific components
@@ -109,6 +116,83 @@ tell-their-stories/
         └── {personId}/    # Per-person folder
             └── runs/      # Versioned extraction runs
 ```
+
+## 📊 Data Model (GEDCOM X)
+
+This project uses the **GEDCOM X data model** adapted for Convex's document-oriented storage. Key differences from traditional genealogy software:
+
+### Relationship-Based (Not Family-Based)
+
+**Traditional approach:**
+```
+Family entity contains:
+  - Husband
+  - Wife
+  - Children[]
+```
+
+**Our approach (GEDCOM X):**
+```
+Relationships are direct Person↔Person:
+  - Couple (John ↔ Mary)
+  - ParentChild (John → Child1, Mary → Child1)
+  - ParentChild (John → Child2, Mary → Child2)
+```
+
+**Why this is better:**
+- ✅ Handles remarriages cleanly (multiple Couple relationships)
+- ✅ Step-families (ParentChild with type "Step")
+- ✅ Adoptions (ParentChild with type "Adopted")
+- ✅ Unknown parents (one-sided relationships)
+- ✅ Same-sex couples (no husband/wife designation)
+- ✅ Complex family situations without workarounds
+
+### Embedded Facts for Performance
+
+Common facts (birth, death) are **embedded on Person records** for fast reads:
+```typescript
+person.birth.date.year  // Fast: no join needed
+person.death.place.original  // Fast: no join needed
+```
+
+These facts are **also stored in the events table** for:
+- Complex queries (all births in a year)
+- Multiple witnesses/participants
+- Events without a known person yet
+
+### Evidence vs. Conclusion
+
+Citations distinguish **evidence** (raw from records) from **conclusions** (researcher's interpretation):
+- `citation.isEvidence = true` → Verbatim from a census, birth certificate, etc.
+- `citation.isEvidence = false` → Researcher's conclusion combining multiple sources
+
+This follows the **Genealogical Proof Standard** and enables AI to distinguish between source data and inferences.
+
+### FamilySearch Integration
+
+Every entity tracks its FamilySearch ID for bi-directional sync:
+- `person.fsId` → FamilySearch Person ID
+- `relationship.familySearchId` → FamilySearch Relationship ID
+- `source.fsId` → FamilySearch Source ID
+
+The `familySearchSync` table tracks:
+- When each person was last synced
+- What changed (local vs. remote)
+- Conflict detection (simultaneous edits)
+
+### Core Entities
+
+| Entity | Purpose | GEDCOM X Equivalent |
+|--------|---------|---------------------|
+| **Person** | Individual (living or deceased) | Person |
+| **Relationship** | Direct Person↔Person link (Couple, ParentChild) | Relationship |
+| **Event** | Standalone events (census, occupation, etc.) | Event |
+| **Place** | Hierarchical place descriptions | PlaceDescription |
+| **Source** | Top-level source (book, census, etc.) | SourceDescription |
+| **Citation** | Specific reference within source | SourceReference |
+| **Story** | AI-generated or user-written narratives | *(our extension)* |
+| **ResearchTask** | AI-suggested research tasks | *(our extension)* |
+| **FamilySearchSync** | Sync state per person | *(our extension)* |
 
 ## ⚙️ Configuration
 
