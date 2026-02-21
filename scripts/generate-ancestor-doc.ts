@@ -201,15 +201,20 @@ async function main() {
       
       for (const { source, citations } of entries) {
         doc.push(`**${source.title}**`);
-        if (source.url) doc.push(`  URL: ${source.url}`);
         if (source.repository) doc.push(`  Repository: ${source.repository}`);
         
+        let hadText = false;
         for (const c of citations) {
           if (c.extractedText) {
+            hadText = true;
             doc.push(`  > ${c.extractedText}`);
           }
-          if (c.url && c.url !== source.url) {
-            doc.push(`  Citation URL: ${c.url}`);
+        }
+        if (!hadText) {
+          // Only show URLs when no citation text exists
+          if (source.url) doc.push(`  URL: ${source.url}`);
+          for (const c of citations) {
+            if (c.url && c.url !== source.url) doc.push(`  Citation URL: ${c.url}`);
           }
         }
         doc.push("");

@@ -30,7 +30,8 @@ import {
   ChevronRight,
   PenTool,
   Clock,
-  Wrench
+  Wrench,
+  Users
 } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
@@ -41,6 +42,12 @@ const navItems = [
     label: "Dashboard",
     icon: LayoutDashboard,
     exact: true,
+  },
+  {
+    href: "/app/people",
+    label: "People",
+    icon: Users,
+    available: true,
   },
   {
     href: "/app/source-docs",
