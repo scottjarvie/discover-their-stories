@@ -1,20 +1,3 @@
-/**
- * Person Workspace Page
- * 
- * Purpose: Main workspace for a documented person
- * 
- * Key Elements:
- * - Person info header
- * - Run selector
- * - Tab navigation (Overview, Raw, AI, Diff)
- * - Content panels
- * 
- * Dependencies:
- * - @/components/ui/*
- * 
- * Last Updated: Initial setup
- */
-
 "use client";
 
 import { useState, useEffect, use } from "react";
@@ -23,17 +6,19 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { 
-  User, 
-  FileText, 
-  Brain, 
-  GitCompare, 
+import {
+  User,
+  FileText,
+  Brain,
+  GitCompare,
   Calendar,
   ExternalLink,
-  ArrowLeft
+  ArrowLeft,
+  Files
 } from "lucide-react";
 import Link from "next/link";
 import { PersonMetadata, RunMetadata } from "@/lib/storage/types";
+import { DocumentsViewer } from "@/components/DocumentsViewer";
 
 interface PageProps {
   params: Promise<{ personId: string }>;
@@ -57,7 +42,7 @@ export default function PersonWorkspacePage({ params }: PageProps) {
       try {
         const response = await fetch(`/api/people/${personId}`);
         const result = await response.json();
-        
+
         if (result.success) {
           setData(result);
           setSelectedRunId(result.latestRunId || result.runs[0]?.runId);
@@ -97,7 +82,7 @@ export default function PersonWorkspacePage({ params }: PageProps) {
   return (
     <div className="p-8">
       {/* Back Link */}
-      <Link 
+      <Link
         href="/app/source-docs"
         className="inline-flex items-center gap-1 text-stone-500 hover:text-stone-900 mb-6"
       >
@@ -159,9 +144,10 @@ export default function PersonWorkspacePage({ params }: PageProps) {
       </div>
 
       {/* Tabs */}
-      <Tabs defaultValue="overview" className="space-y-6">
+      <Tabs defaultValue="documents" className="space-y-6">
         <TabsList>
           <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="documents">Documents</TabsTrigger>
           <TabsTrigger value="raw">Raw Document</TabsTrigger>
           <TabsTrigger value="ai">AI Analysis</TabsTrigger>
           <TabsTrigger value="diff">Compare Runs</TabsTrigger>
@@ -243,6 +229,24 @@ export default function PersonWorkspacePage({ params }: PageProps) {
                   Run AI Analysis
                 </Link>
               </Button>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Documents Tab */}
+        <TabsContent value="documents">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Files className="w-5 h-5 text-amber-700" />
+                Generated Documents
+              </CardTitle>
+              <CardDescription>
+                View Person Sheets (PS) and Complete Source Transcriptions (CST)
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <DocumentsViewer personId={personId} />
             </CardContent>
           </Card>
         </TabsContent>

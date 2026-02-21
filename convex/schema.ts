@@ -676,6 +676,22 @@ export default defineSchema({
     .index("by_entity_activity", ["entityType", "entityId", "activityType"]),
 
   /**
+   * DOCUMENTS
+   * Person-level documents (Person Sheet + CST)
+   */
+  documents: defineTable({
+    personId: v.string(),
+    type: v.union(v.literal("PS"), v.literal("CST")),
+    title: v.string(),
+    contentMarkdown: v.string(),
+    contentText: v.string(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_personId", ["personId"])
+    .index("by_personId_type", ["personId", "type"]),
+
+  /**
    * STORIES
    * AI-generated or user-written narratives
    * Our unique differentiator!
