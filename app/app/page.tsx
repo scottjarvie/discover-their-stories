@@ -21,6 +21,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FileText, Upload, Plus, ArrowRight, Clock } from "lucide-react";
+import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Workspace",
+  description: "Manage imports and launch Source Documentation tools in your workspace.",
+  path: "/app",
+});
 
 export default function DashboardPage() {
   return (

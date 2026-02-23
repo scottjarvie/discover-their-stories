@@ -3,11 +3,11 @@ import { chatCompletion } from "@/lib/ai/openrouter";
 
 export async function POST(request: NextRequest) {
   try {
-    const { prompt, data, model, apiKey } = await request.json();
+    const { prompt, data, model, apiKey, systemPrompt } = await request.json();
 
-    if (!prompt || !data) {
+    if (!prompt) {
       return NextResponse.json(
-        { error: "Missing prompt or data" },
+        { error: "Missing prompt" },
         { status: 400 }
       );
     }
@@ -22,8 +22,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Construct the prompt
-    const fullPrompt = `${prompt}\n\nINPUT DATA:\n${data}`;
+    const serializedData =
+      typeof data === "string" ? data : data ? JSON.stringify(data, null, 2) : "";
+    const fullPrompt = serializedData ? `${prompt}\n\nINPUT DATA:\n${serializedData}` : prompt;
 
     const response = await chatCompletion({
       config: {
@@ -32,7 +33,13 @@ export async function POST(request: NextRequest) {
         temperature: 0.3,
       },
       messages: [
-        { role: "system", content: "You are a helpful research assistant." },
+        {
+          role: "system",
+          content:
+            typeof systemPrompt === "string" && systemPrompt.trim()
+              ? systemPrompt
+              : "You are a helpful research assistant.",
+        },
         { role: "user", content: fullPrompt },
       ],
     });

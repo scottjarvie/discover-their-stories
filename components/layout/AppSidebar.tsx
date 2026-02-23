@@ -31,10 +31,20 @@ import {
   PenTool,
   Clock,
   Wrench,
-  Users
+  Users,
+  Menu
 } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 const navItems = [
   {
@@ -75,6 +85,102 @@ const navItems = [
   },
 ];
 
+export function AppMobileNav() {
+  const pathname = usePathname();
+
+  const isActive = (href: string, exact?: boolean) => {
+    if (exact) return pathname === href;
+    return pathname.startsWith(href);
+  };
+
+  return (
+    <header className="sticky top-0 z-30 border-b border-stone-800 bg-stone-900 text-white md:hidden">
+      <div className="flex h-16 items-center justify-between px-4">
+        <Link href="/" className="flex items-center gap-2">
+          <div className="w-8 h-8 bg-amber-700 rounded-lg flex items-center justify-center flex-shrink-0">
+            <BookOpen className="w-5 h-5 text-white" />
+          </div>
+          <span className="font-semibold text-sm">Tell Their Stories</span>
+        </Link>
+
+        <Sheet>
+          <SheetTrigger asChild>
+            <button
+              type="button"
+              aria-label="Open app navigation"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-stone-700 text-stone-200"
+            >
+              <Menu className="h-5 w-5" />
+            </button>
+          </SheetTrigger>
+          <SheetContent side="left" className="border-stone-800 bg-stone-900 p-0 text-white">
+            <SheetHeader className="sr-only">
+              <SheetTitle>App navigation</SheetTitle>
+              <SheetDescription>
+                Navigate between dashboard tools, source docs, and settings.
+              </SheetDescription>
+            </SheetHeader>
+            <div className="p-4 border-b border-stone-800">
+              <Link href="/" className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-amber-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <BookOpen className="w-5 h-5 text-white" />
+                </div>
+                <span className="font-semibold text-sm">Tell Their Stories</span>
+              </Link>
+            </div>
+            <nav className="flex-1 py-4 px-2">
+              <ul className="space-y-1">
+                {navItems.map((item) => (
+                  <li key={item.href}>
+                    {item.comingSoon ? (
+                      <span className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-stone-500">
+                        <item.icon className="w-5 h-5 flex-shrink-0" />
+                        <span className="flex-1">{item.label}</span>
+                        <span className="text-xs bg-stone-700 px-2 py-0.5 rounded">Soon</span>
+                      </span>
+                    ) : (
+                      <SheetClose asChild>
+                        <Link
+                          href={item.href}
+                          className={cn(
+                            "flex items-center gap-3 rounded-lg px-3 py-2.5",
+                            isActive(item.href, item.exact)
+                              ? "bg-amber-700 text-white"
+                              : "text-stone-300 hover:bg-stone-800"
+                          )}
+                        >
+                          <item.icon className="w-5 h-5 flex-shrink-0" />
+                          <span>{item.label}</span>
+                        </Link>
+                      </SheetClose>
+                    )}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-4 border-t border-stone-800 pt-4">
+                <SheetClose asChild>
+                  <Link
+                    href="/app/settings"
+                    className={cn(
+                      "flex items-center gap-3 rounded-lg px-3 py-2.5",
+                      isActive("/app/settings")
+                        ? "bg-amber-700 text-white"
+                        : "text-stone-300 hover:bg-stone-800"
+                    )}
+                  >
+                    <Settings className="w-5 h-5 flex-shrink-0" />
+                    <span>Settings</span>
+                  </Link>
+                </SheetClose>
+              </div>
+            </nav>
+          </SheetContent>
+        </Sheet>
+      </div>
+    </header>
+  );
+}
+
 export function AppSidebar() {
   const pathname = usePathname();
   const [collapsed, setCollapsed] = useState(false);
@@ -87,7 +193,7 @@ export function AppSidebar() {
   return (
     <aside 
       className={cn(
-        "fixed left-0 top-0 bottom-0 bg-stone-900 text-white flex flex-col transition-all duration-300 z-40",
+        "fixed left-0 top-0 bottom-0 z-40 hidden flex-col bg-stone-900 text-white transition-all duration-300 md:flex",
         collapsed ? "w-16" : "w-64"
       )}
     >
@@ -163,6 +269,8 @@ export function AppSidebar() {
       {/* Collapse Toggle */}
       <button
         onClick={() => setCollapsed(!collapsed)}
+        aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+        aria-expanded={!collapsed}
         className="absolute -right-3 top-20 w-6 h-6 bg-stone-800 border border-stone-700 rounded-full flex items-center justify-center text-stone-400 hover:text-white hover:bg-stone-700 transition-colors"
       >
         {collapsed ? (

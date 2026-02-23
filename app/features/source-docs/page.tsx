@@ -22,6 +22,8 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, FileText, Brain, Download, CheckCircle } from "lucide-react";
+import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 
 const steps = [
   {
@@ -64,6 +66,13 @@ const outputs = [
   },
 ];
 
+export const metadata: Metadata = createPageMetadata({
+  title: "Source Documentation Tool",
+  description:
+    "Learn how Source Documentation captures FamilySearch records and turns them into raw evidence and contextualized dossiers.",
+  path: "/features/source-docs",
+});
+
 export default function SourceDocsFeaturePage() {
   return (
     <div className="min-h-screen bg-white">
@@ -86,6 +95,7 @@ export default function SourceDocsFeaturePage() {
 
           {/* Key Benefits */}
           <section className="mb-16">
+            <h2 className="sr-only">Key Benefits</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center p-6">
                 <CheckCircle className="w-8 h-8 text-green-600 mx-auto mb-3" />

@@ -47,6 +47,12 @@ export function Footer() {
             <Link href="/roadmap" className="hover:text-white transition-colors">
               Roadmap
             </Link>
+            <Link href="/privacy" className="hover:text-white transition-colors">
+              Privacy
+            </Link>
+            <Link href="/contact" className="hover:text-white transition-colors">
+              Contact
+            </Link>
           </nav>
 
           {/* Copyright */}

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import type { Metadata } from "next";
 import { 
   Download, 
   Chrome, 
@@ -13,10 +14,18 @@ import {
   Upload
 } from "lucide-react";
 import Link from "next/link";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Extension",
+  description:
+    "Install the FamilySearch Source Extractor extension and import evidence packs into Tell Their Stories.",
+  path: "/extension",
+});
 
 export default function ExtensionPage() {
   return (
-    <div className="min-h-screen">
+    <main className="min-h-screen">
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-amber-50 to-white py-16 md:py-24">
         <div className="container max-w-4xl mx-auto px-4 text-center">
@@ -48,6 +57,13 @@ export default function ExtensionPage() {
           
           <p className="text-sm text-stone-500 mt-4">
             Version 1.0.0 • Chrome / Edge / Brave supported
+          </p>
+          <p className="mt-2 text-sm text-stone-500">
+            Review our{" "}
+            <Link href="/privacy" className="text-amber-700 hover:underline">
+              Privacy Policy
+            </Link>{" "}
+            before running extractions.
           </p>
         </div>
       </section>
@@ -154,7 +170,7 @@ export default function ExtensionPage() {
                 </div>
                 <div className="flex-grow">
                   <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
-                  <p className="text-stone-600">{item.description}</p>
+                  <p className="text-stone-600 break-all">{item.description}</p>
                 </div>
                 <item.icon className="w-6 h-6 text-stone-400 flex-shrink-0 hidden sm:block" />
               </div>
@@ -316,6 +332,6 @@ export default function ExtensionPage() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

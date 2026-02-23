@@ -14,16 +14,9 @@ const isDocumentType = (value: string | null): value is "PS" | "CST" =>
   value === "PS" || value === "CST";
 
 export async function GET(request: NextRequest) {
-  if (!convexUrl) {
-    return NextResponse.json(
-      { error: "Missing NEXT_PUBLIC_CONVEX_URL" },
-      { status: 500 }
-    );
-  }
-
   const { searchParams } = new URL(request.url);
   const personId = searchParams.get("personId");
-  const type = searchParams.get("type");
+  const typeParam = searchParams.get("type");
 
   if (!personId) {
     return NextResponse.json(
@@ -32,10 +25,25 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  if (type && !isDocumentType(type)) {
+  const type = typeParam && isDocumentType(typeParam) ? typeParam : null;
+
+  if (typeParam && !type) {
     return NextResponse.json(
       { error: "Invalid document type" },
       { status: 400 }
+    );
+  }
+
+  if (!convexUrl) {
+    return NextResponse.json(
+      {
+        success: false,
+        configured: false,
+        error:
+          "Documents storage is not configured. Set NEXT_PUBLIC_CONVEX_URL to enable PS/CST documents.",
+        ...(type ? { document: null } : { documents: [] }),
+      },
+      { status: 200 }
     );
   }
 

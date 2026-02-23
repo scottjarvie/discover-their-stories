@@ -19,6 +19,8 @@
 import { MarketingNav } from "@/components/layout/MarketingNav";
 import { Footer } from "@/components/layout/Footer";
 import { FeatureCard } from "@/components/layout/FeatureCard";
+import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 import { 
   FileText, 
   BookOpen, 
@@ -74,6 +76,13 @@ const features = [
     status: "planned" as const,
   },
 ];
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Features",
+  description:
+    "Explore the tools in Tell Their Stories, including Source Documentation and planned family history workflows.",
+  path: "/features",
+});
 
 export default function FeaturesPage() {
   return (

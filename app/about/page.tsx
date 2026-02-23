@@ -18,6 +18,15 @@
 import { MarketingNav } from "@/components/layout/MarketingNav";
 import { Footer } from "@/components/layout/Footer";
 import { Heart, Shield, Lightbulb, Users } from "lucide-react";
+import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "About",
+  description:
+    "Learn the mission behind Tell Their Stories and the principles guiding this family history platform.",
+  path: "/about",
+});
 
 const principles = [
   {

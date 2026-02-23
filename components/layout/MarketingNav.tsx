@@ -69,6 +69,8 @@ export function MarketingNav() {
           {/* Mobile Menu Button */}
           <button
             className="md:hidden p-2 text-stone-600"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? (

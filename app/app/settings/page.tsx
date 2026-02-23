@@ -154,7 +154,11 @@ export default function SettingsPage() {
           <CardContent className="space-y-4">
             <div className="flex gap-2">
               <div className="relative flex-1">
+                <Label htmlFor="openrouter-api-key" className="sr-only">
+                  OpenRouter API key
+                </Label>
                 <Input
+                  id="openrouter-api-key"
                   type={showApiKey ? "text" : "password"}
                   placeholder="sk-or-..."
                   value={settings.openRouterApiKey}
@@ -164,6 +168,8 @@ export default function SettingsPage() {
                 <button
                   type="button"
                   onClick={() => setShowApiKey(!showApiKey)}
+                  aria-label={showApiKey ? "Hide API key" : "Show API key"}
+                  aria-pressed={showApiKey}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600"
                 >
                   {showApiKey ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -262,6 +268,9 @@ export default function SettingsPage() {
               </div>
               <button
                 onClick={() => saveSettings({ ...settings, autoRedact: !settings.autoRedact })}
+                aria-label={settings.autoRedact ? "Disable auto-redact" : "Enable auto-redact"}
+                aria-checked={settings.autoRedact}
+                role="switch"
                 className={`w-12 h-6 rounded-full transition-colors ${
                   settings.autoRedact ? "bg-amber-700" : "bg-stone-300"
                 }`}

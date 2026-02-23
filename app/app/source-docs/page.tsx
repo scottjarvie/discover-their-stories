@@ -39,6 +39,7 @@ export default function SourceDocsPage() {
   const [importDialogOpen, setImportDialogOpen] = useState(false);
   const [importJson, setImportJson] = useState("");
   const [importing, setImporting] = useState(false);
+  const [importError, setImportError] = useState<string | null>(null);
 
   const fetchPeople = useCallback(async () => {
     try {
@@ -58,6 +59,13 @@ export default function SourceDocsPage() {
     fetchPeople();
   }, [fetchPeople]);
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("action") === "import") {
+      setImportDialogOpen(true);
+    }
+  }, []);
+
   const handleImport = async () => {
     if (!importJson.trim()) {
       toast.error("Please paste Evidence Pack JSON");
@@ -65,6 +73,7 @@ export default function SourceDocsPage() {
     }
 
     setImporting(true);
+    setImportError(null);
 
     try {
       const parsed = JSON.parse(importJson);
@@ -83,13 +92,26 @@ export default function SourceDocsPage() {
         setImportJson("");
         fetchPeople();
       } else {
+        const detailText = Array.isArray(data.details) && data.details.length > 0
+          ? data.details
+              .slice(0, 3)
+              .map((issue: { path?: Array<string | number>; message?: string }) =>
+                `${issue.path?.join(".") || "input"}: ${issue.message || "invalid value"}`
+              )
+              .join("; ")
+          : data.error || "Failed to import";
+        setImportError(detailText);
         toast.error(data.error || "Failed to import");
       }
     } catch (error) {
       if (error instanceof SyntaxError) {
-        toast.error("Invalid JSON format");
+        const message = "Invalid JSON format";
+        setImportError(message);
+        toast.error(message);
       } else {
-        toast.error("Failed to import Evidence Pack");
+        const message = "Failed to import Evidence Pack";
+        setImportError(message);
+        toast.error(message);
       }
     } finally {
       setImporting(false);
@@ -104,14 +126,15 @@ export default function SourceDocsPage() {
     reader.onload = (e) => {
       const content = e.target?.result as string;
       setImportJson(content);
+      setImportError(null);
     };
     reader.readAsText(file);
   };
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-8">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <h1 className="text-3xl font-bold text-stone-900 mb-2">
             Source Documentation
@@ -122,7 +145,7 @@ export default function SourceDocsPage() {
         </div>
         <Button 
           onClick={() => setImportDialogOpen(true)}
-          className="bg-amber-700 hover:bg-amber-800"
+          className="w-full bg-amber-700 hover:bg-amber-800 sm:w-auto"
         >
           <Upload className="w-4 h-4 mr-2" />
           Import Evidence Pack
@@ -201,15 +224,27 @@ export default function SourceDocsPage() {
             {/* JSON Textarea */}
             <Textarea
               value={importJson}
-              onChange={(e) => setImportJson(e.target.value)}
+              onChange={(e) => {
+                setImportJson(e.target.value);
+                setImportError(null);
+              }}
               placeholder='{"schemaVersion": "1.0", ...}'
               className="min-h-[200px] font-mono text-sm"
             />
 
+            {importError && (
+              <div className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+                {importError}
+              </div>
+            )}
+
             <div className="flex justify-end gap-2">
               <Button 
                 variant="outline" 
-                onClick={() => setImportDialogOpen(false)}
+                onClick={() => {
+                  setImportDialogOpen(false);
+                  setImportError(null);
+                }}
               >
                 Cancel
               </Button>

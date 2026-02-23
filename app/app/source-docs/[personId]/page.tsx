@@ -80,7 +80,7 @@ export default function PersonWorkspacePage({ params }: PageProps) {
   if (person.deathDate) dates.push(`d. ${person.deathDate}`);
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-8">
       {/* Back Link */}
       <Link
         href="/app/source-docs"
@@ -91,7 +91,7 @@ export default function PersonWorkspacePage({ params }: PageProps) {
       </Link>
 
       {/* Person Header */}
-      <div className="flex items-start justify-between mb-8">
+      <div className="mb-8 flex flex-col items-start justify-between gap-4 lg:flex-row">
         <div className="flex items-start gap-4">
           <div className="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center">
             <User className="w-8 h-8 text-amber-700" />
@@ -124,14 +124,14 @@ export default function PersonWorkspacePage({ params }: PageProps) {
 
         {/* Run Selector */}
         {runs.length > 0 && (
-          <div className="text-right">
+          <div className="w-full lg:w-auto lg:text-right">
             <label className="block text-sm text-stone-500 mb-1">
               Extraction Run
             </label>
             <select
               value={selectedRunId || ""}
               onChange={(e) => setSelectedRunId(e.target.value)}
-              className="border border-stone-200 rounded-lg px-3 py-2 text-sm bg-white"
+              className="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm lg:w-auto"
             >
               {runs.map((run) => (
                 <option key={run.runId} value={run.runId}>
@@ -144,12 +144,13 @@ export default function PersonWorkspacePage({ params }: PageProps) {
       </div>
 
       {/* Tabs */}
-      <Tabs defaultValue="documents" className="space-y-6">
-        <TabsList>
+      <Tabs defaultValue="overview" className="space-y-6">
+        <TabsList className="h-auto flex-wrap gap-2">
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="documents">Documents</TabsTrigger>
           <TabsTrigger value="raw">Raw Document</TabsTrigger>
           <TabsTrigger value="ai">AI Analysis</TabsTrigger>
+          <TabsTrigger value="contextualized">Contextualized</TabsTrigger>
           <TabsTrigger value="diff">Compare Runs</TabsTrigger>
         </TabsList>
 
@@ -216,7 +217,7 @@ export default function PersonWorkspacePage({ params }: PageProps) {
                 Generate documents and run AI analysis
               </CardDescription>
             </CardHeader>
-            <CardContent className="flex gap-4">
+            <CardContent className="flex flex-wrap gap-4">
               <Button asChild variant="outline">
                 <Link href={`/app/source-docs/${personId}/raw`}>
                   <FileText className="w-4 h-4 mr-2" />
@@ -227,6 +228,15 @@ export default function PersonWorkspacePage({ params }: PageProps) {
                 <Link href={`/app/source-docs/${personId}/ai`}>
                   <Brain className="w-4 h-4 mr-2" />
                   Run AI Analysis
+                </Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link
+                  href={`/app/source-docs/${personId}/contextualized${
+                    selectedRunId ? `?run=${selectedRunId}` : ""
+                  }`}
+                >
+                  View Contextualized Dossier
                 </Link>
               </Button>
             </CardContent>
@@ -284,6 +294,29 @@ export default function PersonWorkspacePage({ params }: PageProps) {
                 <Link href={`/app/source-docs/${personId}/ai`}>
                   <Brain className="w-4 h-4 mr-2" />
                   Open AI Processing
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Contextualized Tab */}
+        <TabsContent value="contextualized">
+          <Card>
+            <CardHeader>
+              <CardTitle>Contextualized Dossier</CardTitle>
+              <CardDescription>
+                View the saved dossier generated from Stage 3 synthesis.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button asChild variant="outline">
+                <Link
+                  href={`/app/source-docs/${personId}/contextualized${
+                    selectedRunId ? `?run=${selectedRunId}` : ""
+                  }`}
+                >
+                  Open Contextualized Dossier
                 </Link>
               </Button>
             </CardContent>

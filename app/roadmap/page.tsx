@@ -19,6 +19,8 @@
 import { MarketingNav } from "@/components/layout/MarketingNav";
 import { Footer } from "@/components/layout/Footer";
 import { CheckCircle, Clock, Lightbulb } from "lucide-react";
+import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 
 const roadmapItems = [
   {
@@ -94,6 +96,13 @@ const roadmapItems = [
     ],
   },
 ];
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Roadmap",
+  description:
+    "See what is available now, in development, and planned for Tell Their Stories.",
+  path: "/roadmap",
+});
 
 export default function RoadmapPage() {
   return (

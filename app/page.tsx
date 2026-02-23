@@ -28,6 +28,15 @@ import { Hero } from "@/components/marketing/Hero";
 import { FeatureShowcase } from "@/components/marketing/FeatureShowcase";
 import { ValueProps } from "@/components/marketing/ValueProps";
 import { CTASection } from "@/components/marketing/CTASection";
+import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Home",
+  description:
+    "Go beyond names and dates with AI-assisted family history research, documentation, and storytelling.",
+  path: "/",
+});
 
 export default function HomePage() {
   return (

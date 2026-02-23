@@ -20,6 +20,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
+import { defaultMetadata } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -33,9 +35,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tell Their Stories - A Family History AI Toolset",
-  description: "Go beyond names and dates. Research deeply. Create content. Tell their stories.",
+  ...defaultMetadata,
+  metadataBase: new URL(SITE_URL),
   keywords: ["family history", "genealogy", "AI", "storytelling", "FamilySearch", "ancestors"],
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({

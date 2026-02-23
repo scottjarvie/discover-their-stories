@@ -1,20 +1,83 @@
 "use client";
 
-import { useState } from "react";
-import { useQuery } from "convex/react";
-import { api } from "@/convex/_generated/api";
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { FileText, Download, Copy, Check } from "lucide-react";
+import { FileText, Download, Copy, Check, AlertTriangle } from "lucide-react";
 
 interface DocumentsViewerProps {
   personId: string;
 }
 
+interface DocumentRecord {
+  _id: string;
+  type: "PS" | "CST";
+  title: string;
+  contentMarkdown: string;
+  updatedAt: string | number;
+}
+
 export function DocumentsViewer({ personId }: DocumentsViewerProps) {
-  const documents = useQuery(api.documents.getDocumentsByPerson, { personId });
+  const convexConfigured = Boolean(process.env.NEXT_PUBLIC_CONVEX_URL);
+  const [documents, setDocuments] = useState<DocumentRecord[] | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  useEffect(() => {
+    let mounted = true;
+
+    async function fetchDocuments() {
+      if (!convexConfigured) {
+        if (mounted) {
+          setError(
+            "Documents storage isn't configured yet. Set NEXT_PUBLIC_CONVEX_URL to enable PS/CST documents."
+          );
+          setDocuments([]);
+        }
+        return;
+      }
+
+      try {
+        setError(null);
+        setDocuments(null);
+        const response = await fetch(
+          `/api/convex/documents?personId=${encodeURIComponent(personId)}`
+        );
+        const payload = await response.json().catch(() => null);
+
+        if (!response.ok) {
+          if (mounted) {
+            setError(payload?.error || "Could not load Convex documents");
+            setDocuments([]);
+          }
+          return;
+        }
+
+        if (!payload?.success) {
+          if (mounted) {
+            setError(payload?.error || "Could not load Convex documents");
+            setDocuments([]);
+          }
+          return;
+        }
+
+        if (mounted) {
+          setDocuments(payload.documents || []);
+        }
+      } catch (fetchError) {
+        if (mounted) {
+          setError(fetchError instanceof Error ? fetchError.message : "Could not load Convex documents");
+          setDocuments([]);
+        }
+      }
+    }
+
+    fetchDocuments();
+    return () => {
+      mounted = false;
+    };
+  }, [convexConfigured, personId]);
 
   const handleCopy = async (text: string, id: string) => {
     await navigator.clipboard.writeText(text);
@@ -36,6 +99,18 @@ export function DocumentsViewer({ personId }: DocumentsViewerProps) {
 
   if (!documents) {
     return <div className="p-8 text-center text-stone-400">Loading documents...</div>;
+  }
+
+  if (error) {
+    return (
+      <Card>
+        <CardContent className="p-8 text-center">
+          <AlertTriangle className="w-12 h-12 text-orange-300 mx-auto mb-4" />
+          <h3 className="text-lg font-medium text-stone-900 mb-2">Documents Unavailable</h3>
+          <p className="text-stone-500">{error}</p>
+        </CardContent>
+      </Card>
+    );
   }
 
   if (documents.length === 0) {
