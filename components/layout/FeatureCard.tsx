@@ -33,6 +33,7 @@ interface FeatureCardProps {
 
 export function FeatureCard({ title, description, icon: Icon, status, href }: FeatureCardProps) {
   const isAvailable = status === "available";
+  const ctaLabel = href?.startsWith("/features/") ? "Learn More" : "Try Now";
   
   const cardContent = (
     <Card className={`h-full transition-all duration-300 ${
@@ -66,7 +67,7 @@ export function FeatureCard({ title, description, icon: Icon, status, href }: Fe
       {isAvailable && href && (
         <CardContent>
           <span className="inline-flex items-center gap-1 text-amber-700 font-medium text-sm group">
-            Try Now 
+            {ctaLabel}
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </span>
         </CardContent>

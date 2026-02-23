@@ -57,7 +57,7 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent>
             <Button asChild variant="outline" className="w-full">
-              <Link href="/app/source-docs?action=import">
+              <Link href="/app/source-docs#import">
                 Import JSON
               </Link>
             </Button>

@@ -60,9 +60,16 @@ export default function SourceDocsPage() {
   }, [fetchPeople]);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("action") === "import") {
+    const url = new URL(window.location.href);
+    const shouldOpenFromLink =
+      url.searchParams.get("action") === "import" || url.hash === "#import";
+
+    if (shouldOpenFromLink) {
       setImportDialogOpen(true);
+      if (url.searchParams.get("action") === "import") {
+        url.searchParams.delete("action");
+        window.history.replaceState({}, "", `${url.pathname}${url.search}${url.hash || "#import"}`);
+      }
     }
   }, []);
 

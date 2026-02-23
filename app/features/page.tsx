@@ -37,7 +37,7 @@ const features = [
     description: "Extract sources from FamilySearch person pages and create comprehensive documentation. The tool captures all indexed information, citations, and attachments, then uses AI to generate contextualized dossiers that identify patterns, conflicts, and research opportunities.",
     icon: FileText,
     status: "available" as const,
-    href: "/app/source-docs",
+    href: "/features/source-docs",
   },
   {
     title: "Story Writer",

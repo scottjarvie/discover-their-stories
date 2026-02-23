@@ -91,6 +91,15 @@ export default function SourceDocsFeaturePage() {
               Extract FamilySearch sources and transform them into organized 
               evidence documents and AI-contextualized research dossiers.
             </p>
+            <p className="mt-4 text-sm text-stone-500">
+              <Link href="/features" className="text-amber-700 hover:underline">
+                Browse all features
+              </Link>
+              {" · "}
+              <Link href="/extension" className="text-amber-700 hover:underline">
+                Install the browser extension
+              </Link>
+            </p>
           </div>
 
           {/* Key Benefits */}
@@ -194,16 +203,21 @@ export default function SourceDocsFeaturePage() {
 
           {/* CTA */}
           <div className="text-center">
-            <Button 
-              asChild 
-              size="lg" 
-              className="bg-amber-700 hover:bg-amber-800 text-lg px-8 py-6"
-            >
-              <Link href="/app/source-docs" className="flex items-center gap-2">
-                Try Source Documentation
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </Button>
+            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Button
+                asChild
+                size="lg"
+                className="bg-amber-700 hover:bg-amber-800 text-lg px-8 py-6"
+              >
+                <Link href="/app/source-docs" className="flex items-center gap-2">
+                  Try Source Documentation
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="text-lg px-8 py-6">
+                <Link href="/extension">Install Extension</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </main>

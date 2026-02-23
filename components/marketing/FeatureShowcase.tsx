@@ -32,7 +32,7 @@ const features = [
     description: "Extract and document FamilySearch sources with AI-powered analysis. Create raw evidence documents and contextualized dossiers.",
     icon: FileText,
     status: "available" as const,
-    href: "/app/source-docs",
+    href: "/features/source-docs",
   },
   {
     title: "Story Writer",
