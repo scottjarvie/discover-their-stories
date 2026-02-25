@@ -19,22 +19,22 @@ const valueProps = [
   {
     icon: Search,
     title: "Discovery over data entry",
-    description: "Use AI-assisted research patterns to reveal context, migration, occupation, and social history hidden behind records.",
+    description: "Reveal context hidden in records.",
   },
   {
     icon: Brain,
     title: "Intelligence tuned for genealogy",
-    description: "Purpose-built prompts guide you through evidence, contradictions, and source quality before narrative generation begins.",
+    description: "AI prompts built for genealogical evidence.",
   },
   {
     icon: Download,
     title: "Future-proof outputs",
-    description: "Keep your work portable with readable exports. Build a family archive your children and grandchildren can inherit.",
+    description: "Export everything in readable formats.",
   },
   {
     icon: Heart,
     title: "Heart-centered storytelling",
-    description: "Transform records into memory-rich narratives that reconnect families to people they never had the chance to meet.",
+    description: "Turn records into stories families remember.",
   },
 ];
 
@@ -48,8 +48,7 @@ export function ValueProps() {
             Why Discover Their Stories?
           </h2>
           <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-[#4e5a64]">
-            This is more than software. It is a framework for turning scattered evidence into
-            meaningful stories that strengthen identity, belonging, and continuity.
+            Find more, write better, preserve what matters.
           </p>
         </div>
 
@@ -77,12 +76,10 @@ export function ValueProps() {
           <p className="text-xs uppercase tracking-[0.22em] text-[#6d6249]">Guiding Vision</p>
           <div className="mt-4 grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
             <p className="text-3xl leading-tight text-[#24323e] sm:text-4xl" data-display="true">
-              We are building tools for a generation that wants to discover who they came from, and
-              tell those stories with clarity.
+              Discover who they were. Tell it clearly. Pass it on.
             </p>
             <p className="text-sm leading-relaxed text-[#4e5a64]">
-              AI is not replacing the historian. It is amplifying the historian. You remain the
-              steward of memory, meaning, and truth.
+              AI helps you move faster. You remain the historian.
             </p>
           </div>
         </div>

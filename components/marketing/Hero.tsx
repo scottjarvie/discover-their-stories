@@ -55,27 +55,27 @@ export function Hero() {
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
             <div className="rounded-2xl border border-[#c7b38f80] bg-[#fbf7eecc] p-4 backdrop-blur-sm">
               <p className="text-xs uppercase tracking-[0.16em] text-[#6c6a56]">Discover</p>
-              <p className="mt-2 text-sm text-[#24323e]">New details hidden in records and sources.</p>
+              <p className="mt-2 text-sm text-[#24323e]">Find hidden details.</p>
             </div>
             <div className="rounded-2xl border border-[#c7b38f80] bg-[#fbf7eecc] p-4 backdrop-blur-sm">
               <p className="text-xs uppercase tracking-[0.16em] text-[#6c6a56]">Connect</p>
-              <p className="mt-2 text-sm text-[#24323e]">Tie events, people, and places into one narrative.</p>
+              <p className="mt-2 text-sm text-[#24323e]">Connect people, places, and events.</p>
             </div>
             <div className="rounded-2xl border border-[#c7b38f80] bg-[#fbf7eecc] p-4 backdrop-blur-sm">
               <p className="text-xs uppercase tracking-[0.16em] text-[#6c6a56]">Preserve</p>
-              <p className="mt-2 text-sm text-[#24323e]">Share stories that outlast a spreadsheet.</p>
+              <p className="mt-2 text-sm text-[#24323e]">Preserve stories for generations.</p>
             </div>
           </div>
 
           <div className="mt-8 rounded-2xl border border-[#b79f7a66] bg-[#efe3cbcc] p-6 shadow-[0_20px_30px_-30px_#5c492f]">
-            <p className="text-xl leading-snug text-[#24323e]" data-display="true">
+            <p className="text-xs uppercase tracking-[0.18em] text-[#6d6249]">
+              The Heart is in the Story.
+            </p>
+            <p className="mt-3 text-xl leading-snug text-[#24323e]" data-display="true">
               “He shall turn the heart of the fathers to the children, and the heart of the children
               to their fathers...”
             </p>
-            <p className="mt-3 text-sm leading-relaxed text-[#4e5a64]">
-              Malachi 4:6. The work matters because, without this turning of hearts, “the whole
-              earth would be utterly wasted.”
-            </p>
+            <p className="mt-3 text-sm leading-relaxed text-[#4e5a64]">Malachi 4:6</p>
           </div>
         </div>
 
@@ -97,7 +97,7 @@ export function Hero() {
                 <div>
                   <p className="text-sm uppercase tracking-[0.16em] text-[#f1d9b1]">Find Signals</p>
                   <p className="mt-1 text-sm text-[#f3eadc]">
-                    Search records with AI guidance to surface people, places, and relationships.
+                    Surface people, places, and links fast.
                   </p>
                 </div>
               </div>
@@ -111,7 +111,7 @@ export function Hero() {
                 <div>
                   <p className="text-sm uppercase tracking-[0.16em] text-[#f1d9b1]">Build Context</p>
                   <p className="mt-1 text-sm text-[#f3eadc]">
-                    Let AI connect events and contradictions into coherent historical context.
+                    Connect events and resolve conflicts.
                   </p>
                 </div>
               </div>
@@ -125,7 +125,7 @@ export function Hero() {
                 <div>
                   <p className="text-sm uppercase tracking-[0.16em] text-[#f1d9b1]">Tell the Story</p>
                   <p className="mt-1 text-sm text-[#f3eadc]">
-                    Generate compelling narratives rooted in evidence, not guesswork.
+                    Write clear stories grounded in evidence.
                   </p>
                 </div>
               </div>

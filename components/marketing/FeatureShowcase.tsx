@@ -29,44 +29,44 @@ import {
 const features = [
   {
     title: "Source Documentation",
-    description: "Extract and document FamilySearch sources with AI-powered analysis. Create raw evidence documents and contextualized dossiers.",
+    description: "Turn FamilySearch sources into clean evidence docs and dossiers.",
     icon: FileText,
     status: "available" as const,
     href: "/features/source-docs",
   },
   {
     title: "Story Writer",
-    description: "Transform documented facts into compelling narratives. AI-assisted writing that turns genealogy data into readable stories.",
+    description: "Convert documented facts into readable narrative drafts.",
     icon: BookOpen,
     status: "coming-soon" as const,
   },
   {
     title: "Photo Analyzer",
-    description: "Extract information from old photographs. Identify people, places, and time periods using AI vision.",
+    description: "Extract people, place, and time clues from old photos.",
     icon: Image,
     status: "planned" as const,
   },
   {
     title: "Timeline Builder",
-    description: "Create visual timelines from multiple sources. See your ancestor's life events in chronological context.",
+    description: "Map life events into one visual timeline.",
     icon: Clock,
     status: "planned" as const,
   },
   {
     title: "Research Planner",
-    description: "Track research goals and get AI-suggested next steps. Never lose track of what you're looking for.",
+    description: "Track next steps with AI-assisted research prompts.",
     icon: Target,
     status: "planned" as const,
   },
   {
     title: "Document Transcriber",
-    description: "OCR and AI transcription for handwritten documents. Turn old letters and records into searchable text.",
+    description: "Transcribe handwritten records into searchable text.",
     icon: FileSearch,
     status: "planned" as const,
   },
   {
     title: "Family Group Sheets",
-    description: "Generate beautifully formatted family group sheets from your documented data.",
+    description: "Generate polished family group sheets from your data.",
     icon: Users,
     status: "planned" as const,
   },
@@ -80,11 +80,10 @@ export function FeatureShowcase() {
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs uppercase tracking-[0.24em] text-[#5f665f]">The Discover Stack</p>
           <h2 className="mt-5 text-4xl leading-tight text-[#1d212a] sm:text-5xl" data-display="true">
-            Tools that turn research into a family story archive
+            Tools for discovery, context, and story
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-[#4e5a64]">
-            Discover Their Stories blends AI, evidence tracking, and writing workflows so your family
-            history can be rigorous and readable.
+            AI tools to find more, connect evidence, and write better stories.
           </p>
         </div>
 

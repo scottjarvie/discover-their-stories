@@ -32,11 +32,10 @@ export function CTASection() {
           The Next Chapter of Family History
         </div>
         <h2 className="mt-8 text-4xl leading-tight text-[#fff6e5] sm:text-5xl" data-display="true">
-          Upgrade from collecting names to discovering legacy-level stories
+          Move from names and dates to living stories
         </h2>
         <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-[#ecdeca] sm:text-xl">
-          Build evidence packs, uncover context with AI, and publish narratives your whole family
-          can carry forward. This is how we reconnect ourselves to our ancestors with purpose.
+          Use AI to gather evidence, build context, and publish stories your family can carry forward.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -61,7 +60,7 @@ export function CTASection() {
         </div>
 
         <p className="mt-8 text-sm text-[#e1d4bd]">
-          Works with FamilySearch • AI-assisted evidence workflows • Portable exports
+          FamilySearch-ready • AI-assisted • Portable exports
         </p>
       </div>
     </section>
