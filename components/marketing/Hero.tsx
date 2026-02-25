@@ -1,6 +1,4 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 export function Hero() {
   return (
@@ -28,36 +26,7 @@ export function Hero() {
             The Heart is in the Story.
           </p>
 
-          <p className="mx-auto mt-7 max-w-3xl text-lg leading-relaxed text-[#3b4650] sm:text-xl">
-            Family history is entering a new age. AI lets you gather evidence faster, uncover
-            deeper context, and transform names and dates into vivid stories your family can carry
-            forward.
-          </p>
-
-          <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="h-[3.25rem] rounded-full bg-[#234d5e] px-8 text-base font-semibold text-[#f7f3e8] shadow-[0_18px_30px_-22px_#0f2730] hover:bg-[#1f4554]"
-            >
-              <Link href="/app" className="flex items-center gap-2">
-                Start Discovering
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="h-[3.25rem] rounded-full border-[#9f5a2d55] bg-[#f8f1e2dd] px-8 text-base text-[#5e4d2f] hover:bg-[#f5e9d2]"
-            >
-              <Link href="/features">See Features</Link>
-            </Button>
-          </div>
-        </div>
-
-        <div className="animate-rise-in [animation-delay:110ms]">
-          <div className="mt-11 rounded-[2.2rem] border border-[#b79f7a66] bg-[#efe3cbdd] px-8 py-10 shadow-[0_26px_50px_-38px_#111] sm:px-10 sm:py-12">
+          <div className="mx-auto mt-7 max-w-5xl rounded-[2.2rem] border border-[#b79f7a66] bg-[#efe3cbdd] px-8 py-10 shadow-[0_26px_50px_-38px_#111] sm:px-10 sm:py-12">
             <p className="text-[13px] uppercase tracking-[0.22em] text-[#6d6249]">The Heart Is In The Story.</p>
             <p className="mt-5 text-4xl leading-tight text-[#24323e] sm:text-5xl lg:text-6xl" data-display="true">
               “He shall turn the heart of the fathers to the children, and the heart of the
@@ -65,6 +34,12 @@ export function Hero() {
             </p>
             <p className="mt-6 text-2xl text-[#4e5a64] sm:text-3xl">Malachi 4:6</p>
           </div>
+
+          <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-[#3b4650] sm:text-xl">
+            Family history is entering a new age. AI lets you gather evidence faster, uncover
+            deeper context, and transform names and dates into vivid stories your family can carry
+            forward.
+          </p>
         </div>
       </div>
     </section>

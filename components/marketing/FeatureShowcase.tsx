@@ -14,6 +14,7 @@ interface JourneyStage {
   blurb: string;
   pillClass: string;
   accentClass: string;
+  cardClass: string;
   features: StageFeature[];
 }
 
@@ -23,6 +24,7 @@ const journeyStages: JourneyStage[] = [
     blurb: "Collect the clues.",
     pillClass: "bg-[#234d5e]",
     accentClass: "text-[#234d5e]",
+    cardClass: "border-[#234d5e55]",
     features: [
       { name: "Source Documentation", status: "available", href: "/features/source-docs" },
       { name: "Photo Analyzer", status: "planned" },
@@ -33,6 +35,7 @@ const journeyStages: JourneyStage[] = [
     blurb: "Organize meaning.",
     pillClass: "bg-[#9f5a2d]",
     accentClass: "text-[#9f5a2d]",
+    cardClass: "border-[#9f5a2d55]",
     features: [
       { name: "Context Dossiers", status: "available", href: "/features/source-docs" },
       { name: "Timeline Builder", status: "planned" },
@@ -43,6 +46,7 @@ const journeyStages: JourneyStage[] = [
     blurb: "Resolve evidence.",
     pillClass: "bg-[#42566b]",
     accentClass: "text-[#42566b]",
+    cardClass: "border-[#42566b55]",
     features: [
       { name: "Research Planner", status: "planned" },
       { name: "Document Transcriber", status: "planned" },
@@ -53,6 +57,7 @@ const journeyStages: JourneyStage[] = [
     blurb: "Write with voice.",
     pillClass: "bg-[#476553]",
     accentClass: "text-[#476553]",
+    cardClass: "border-[#47655355]",
     features: [
       { name: "Story Writer", status: "coming-soon" },
       { name: "Narrative Composer", status: "planned" },
@@ -63,6 +68,7 @@ const journeyStages: JourneyStage[] = [
     blurb: "Pass stories on.",
     pillClass: "bg-[#35506a]",
     accentClass: "text-[#35506a]",
+    cardClass: "border-[#35506a55]",
     features: [
       { name: "Family Group Sheets", status: "planned" },
       { name: "Export Archive", status: "available", href: "/app" },
@@ -90,7 +96,7 @@ export function FeatureShowcase() {
         <div className="mx-auto max-w-4xl text-center">
           <p className="text-xs uppercase tracking-[0.24em] text-[#5f665f]">One Clear Journey</p>
           <h2 className="mt-5 text-4xl leading-tight text-[#1d212a] sm:text-5xl" data-display="true">
-            Discover → Contextualize → Research → Craft Stories → Preserve
+            The Five Stations
           </h2>
           <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-[#4e5a64]">
             AI supports every stage and helps weave stories from the context of real lives.
@@ -98,11 +104,11 @@ export function FeatureShowcase() {
         </div>
 
         <div className="mt-10 overflow-x-auto pb-2">
-          <div className="mx-auto flex min-w-max items-center gap-3 rounded-2xl border border-[#b79f7a66] bg-[#efe4cdcc] px-5 py-4 shadow-[0_20px_35px_-34px_#111]">
+          <div className="mx-auto flex min-w-max items-center gap-3 rounded-2xl border border-[#b79f7a66] bg-[#efe4cdcc] px-6 py-5 shadow-[0_24px_35px_-34px_#111]">
             {journeyStages.map((stage, index) => (
               <div key={stage.name} className="flex items-center gap-3">
                 <span
-                  className={`rounded-full px-5 py-2 text-sm font-semibold uppercase tracking-[0.14em] text-[#f7f3e8] ${stage.pillClass}`}
+                  className={`rounded-full px-6 py-2.5 text-sm font-semibold uppercase tracking-[0.14em] text-[#f7f3e8] ${stage.pillClass}`}
                 >
                   {stage.name}
                 </span>
@@ -116,7 +122,7 @@ export function FeatureShowcase() {
           {journeyStages.map((stage, index) => (
             <div
               key={stage.name}
-              className="rounded-2xl border border-[#c9b79190] bg-[#fdf9f0cc] p-5 shadow-[0_26px_35px_-34px_#111]"
+              className={`rounded-2xl border bg-[#fdf9f0cc] p-5 shadow-[0_26px_35px_-34px_#111] ${stage.cardClass}`}
             >
               <p className="text-[11px] uppercase tracking-[0.22em] text-[#6d6249]">Station {index + 1}</p>
               <h3 className={`mt-2 text-3xl leading-tight ${stage.accentClass}`} data-display="true">
