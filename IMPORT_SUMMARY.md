@@ -1,4 +1,4 @@
-# Tell Their Stories — Data Import Status
+# Discover Their Stories — Data Import Status
 
 **Last updated: 2026-02-17**
 

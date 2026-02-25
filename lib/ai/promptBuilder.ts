@@ -169,7 +169,7 @@ export function buildExportPrompt(
 ): string {
   const systemPrompt = SYSTEM_PROMPTS[stage];
   
-  return `# AI Processing Request for Tell Their Stories
+  return `# AI Processing Request for Discover Their Stories
 
 ## Instructions
 ${systemPrompt}

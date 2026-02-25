@@ -1,5 +1,5 @@
 {
-  "name": "tell-their-stories",
+  "name": "discover-their-stories",
   "version": "0.1.0",
   "private": true,
   "description": "A Family History AI Toolset - Go beyond names and dates",
@@ -11,6 +11,7 @@
     "smoke:routes": "bash scripts/smoke-routes.sh"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.38.2",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-label": "^2.1.8",

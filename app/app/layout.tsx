@@ -21,7 +21,7 @@ import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Workspace",
-  description: "Use the Tell Their Stories workspace tools for import, analysis, and output generation.",
+  description: "Use the Discover Their Stories workspace tools for import, analysis, and output generation.",
   path: "/app",
 });
 
@@ -38,7 +38,7 @@ export default function AppLayout({
         {children}
         <footer className="border-t border-stone-200 px-4 py-6 text-sm text-stone-500 md:px-8">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-4 gap-y-2">
-            <span>Tell Their Stories</span>
+            <span>Discover Their Stories</span>
             <Link href="/privacy" className="hover:text-stone-900 hover:underline">
               Privacy
             </Link>

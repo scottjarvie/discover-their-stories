@@ -1,7 +1,7 @@
 # ✅ Convex Setup Complete!
 
-**Project:** Tell Their Stories  
-**Location:** ~/IDE/tell-their-stories/  
+**Project:** Discover Their Stories  
+**Location:** ~/IDE/discover-their-stories/  
 **Date:** February 11, 2026
 
 ---
@@ -241,7 +241,7 @@ These steps require Convex account setup and should be done when ready to deploy
 
 ### Phase 1: Initialize Convex
 ```bash
-cd ~/IDE/tell-their-stories
+cd ~/IDE/discover-their-stories
 npx convex init
 ```
 

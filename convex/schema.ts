@@ -2,7 +2,7 @@ import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
 
 /**
- * Tell Their Stories - Convex Schema
+ * Discover Their Stories - Convex Schema
  * 
  * This schema follows the GEDCOM X data model adapted for Convex's document-oriented storage.
  * 

@@ -258,7 +258,7 @@ Before deploying to production:
 - **GEDCOM X Spec:** https://github.com/FamilySearch/gedcomx
 - **FamilySearch API:** https://www.familysearch.org/developers/
 - **Research Doc:** `~/clawd/research/family-history/open-source-genealogy-comparison.md`
-- **Migration Guide:** `~/IDE/tell-their-stories/convex/SCHEMA_MIGRATION.md`
+- **Migration Guide:** `~/IDE/discover-their-stories/convex/SCHEMA_MIGRATION.md`
 
 ---
 

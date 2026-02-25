@@ -21,6 +21,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { UserButton } from "@clerk/nextjs";
 import { 
   BookOpen, 
   LayoutDashboard, 
@@ -87,6 +88,7 @@ const navItems = [
 
 export function AppMobileNav() {
   const pathname = usePathname();
+  const clerkEnabled = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
 
   const isActive = (href: string, exact?: boolean) => {
     if (exact) return pathname === href;
@@ -100,7 +102,7 @@ export function AppMobileNav() {
           <div className="w-8 h-8 bg-amber-700 rounded-lg flex items-center justify-center flex-shrink-0">
             <BookOpen className="w-5 h-5 text-white" />
           </div>
-          <span className="font-semibold text-sm">Tell Their Stories</span>
+          <span className="font-semibold text-sm">Discover Their Stories</span>
         </Link>
 
         <Sheet>
@@ -125,7 +127,7 @@ export function AppMobileNav() {
                 <div className="w-8 h-8 bg-amber-700 rounded-lg flex items-center justify-center flex-shrink-0">
                   <BookOpen className="w-5 h-5 text-white" />
                 </div>
-                <span className="font-semibold text-sm">Tell Their Stories</span>
+                <span className="font-semibold text-sm">Discover Their Stories</span>
               </Link>
             </div>
             <nav className="flex-1 py-4 px-2">
@@ -172,6 +174,14 @@ export function AppMobileNav() {
                     <span>Settings</span>
                   </Link>
                 </SheetClose>
+                <div className="mt-3 flex items-center justify-between rounded-lg bg-stone-800/60 px-3 py-2.5 text-sm text-stone-300">
+                  <span>Account</span>
+                  {clerkEnabled ? (
+                    <UserButton afterSignOutUrl="/" />
+                  ) : (
+                    <span className="text-xs text-stone-500">Not configured</span>
+                  )}
+                </div>
               </div>
             </nav>
           </SheetContent>
@@ -184,6 +194,7 @@ export function AppMobileNav() {
 export function AppSidebar() {
   const pathname = usePathname();
   const [collapsed, setCollapsed] = useState(false);
+  const clerkEnabled = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
 
   const isActive = (href: string, exact?: boolean) => {
     if (exact) return pathname === href;
@@ -204,7 +215,7 @@ export function AppSidebar() {
             <BookOpen className="w-5 h-5 text-white" />
           </div>
           {!collapsed && (
-            <span className="font-semibold text-sm">Tell Their Stories</span>
+            <span className="font-semibold text-sm">Discover Their Stories</span>
           )}
         </Link>
       </div>
@@ -264,6 +275,19 @@ export function AppSidebar() {
           <Settings className="w-5 h-5 flex-shrink-0" />
           {!collapsed && <span>Settings</span>}
         </Link>
+        <div
+          className={cn(
+            "mt-2 flex items-center gap-3 rounded-lg bg-stone-800/60 px-3 py-2.5",
+            collapsed && "justify-center px-2"
+          )}
+        >
+          {!collapsed && <span className="flex-1 text-sm text-stone-300">Account</span>}
+          {clerkEnabled ? (
+            <UserButton afterSignOutUrl="/" />
+          ) : (
+            !collapsed && <span className="text-xs text-stone-500">Not configured</span>
+          )}
+        </div>
       </div>
 
       {/* Collapse Toggle */}

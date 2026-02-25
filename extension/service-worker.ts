@@ -186,4 +186,4 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   }
 });
 
-console.log("Tell Their Stories Service Worker initialized");
+console.log("Discover Their Stories Service Worker initialized");

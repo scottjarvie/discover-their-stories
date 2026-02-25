@@ -19,7 +19,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "Extension",
   description:
-    "Install the FamilySearch Source Extractor extension and import evidence packs into Tell Their Stories.",
+    "Install the FamilySearch Source Extractor extension and import evidence packs into Discover Their Stories.",
   path: "/extension",
 });
 
@@ -43,7 +43,7 @@ export default function ExtensionPage() {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-amber-700 hover:bg-amber-800" asChild>
-              <a href="/extension-download/tell-their-stories-extension.zip" download>
+              <a href="/extension-download/discover-their-stories-extension.zip" download>
                 <Download className="w-5 h-5 mr-2" />
                 Download Extension
               </a>
@@ -108,7 +108,7 @@ export default function ExtensionPage() {
                 <CardTitle>Creates Evidence Pack</CardTitle>
                 <CardDescription>
                   Generates a structured JSON file containing all extracted data—ready 
-                  to import into Tell Their Stories for AI analysis.
+                  to import into Discover Their Stories for AI analysis.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -160,7 +160,7 @@ export default function ExtensionPage() {
               {
                 step: 4,
                 title: "Import into App",
-                description: "Open Tell Their Stories, go to Source Documentation, and import your Evidence Pack. Now you can generate documents!",
+                description: "Open Discover Their Stories, go to Source Documentation, and import your Evidence Pack. Now you can generate documents!",
                 icon: Upload,
               },
             ].map((item) => (
@@ -200,7 +200,7 @@ export default function ExtensionPage() {
                     Extract it to a folder you&apos;ll remember (e.g., your Documents folder).
                   </p>
                   <Button variant="outline" size="sm" asChild>
-                    <a href="/extension-download/tell-their-stories-extension.zip" download>
+                    <a href="/extension-download/discover-their-stories-extension.zip" download>
                       <Download className="w-4 h-4 mr-2" />
                       Download ZIP
                     </a>
@@ -243,7 +243,7 @@ export default function ExtensionPage() {
                   <h3 className="font-semibold mb-2">Load the Extension</h3>
                   <p className="text-stone-600 mb-3">
                     Click <strong>&quot;Load unpacked&quot;</strong> and select the extracted extension folder. 
-                    You should see &quot;Tell Their Stories - Source Extractor&quot; appear!
+                    You should see &quot;Discover Their Stories - Source Extractor&quot; appear!
                   </p>
                   <div className="flex items-center gap-2 text-green-700 bg-green-50 px-3 py-2 rounded">
                     <CheckCircle2 className="w-4 h-4" />
@@ -318,7 +318,7 @@ export default function ExtensionPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-white text-amber-800 hover:bg-amber-50" asChild>
-              <a href="/extension-download/tell-their-stories-extension.zip" download>
+              <a href="/extension-download/discover-their-stories-extension.zip" download>
                 <Download className="w-5 h-5 mr-2" />
                 Download Extension
               </a>

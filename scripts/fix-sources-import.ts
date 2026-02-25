@@ -113,6 +113,7 @@ async function main() {
           try {
             const citationId = await client.mutation(api.citations.create, {
               sourceId,
+              confidence: "medium",
               extractedText: citation || undefined,
               url: url || undefined,
               accessDate: new Date().toISOString().slice(0, 10),

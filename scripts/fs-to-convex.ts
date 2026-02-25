@@ -26,7 +26,7 @@ import { Id } from "../convex/_generated/dataModel";
 const CONVEX_URL = process.env.NEXT_PUBLIC_CONVEX_URL || "";
 if (!CONVEX_URL) {
   console.error("❌ NEXT_PUBLIC_CONVEX_URL not found in environment");
-  console.error("   Make sure you're running this from the tell-their-stories directory");
+  console.error("   Make sure you're running this from the discover-their-stories directory");
   console.error("   and that .env.local is configured.");
   process.exit(1);
 }
@@ -296,7 +296,6 @@ async function importSources(data: ExtractedSources): Promise<void> {
       for (const citationData of sourceData.citations) {
         const citationId = await client.mutation(api.citations.create, {
           sourceId,
-          isEvidence: true, // Data extracted from sources is evidence
           confidence: sourceData.confidence as any,
           extractedText: citationData.text,
         });

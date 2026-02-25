@@ -1,4 +1,4 @@
-# Convex Quick Reference - Tell Their Stories
+# Convex Quick Reference - Discover Their Stories
 
 ## Common Patterns
 

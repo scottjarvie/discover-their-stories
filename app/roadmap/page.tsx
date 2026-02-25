@@ -100,7 +100,7 @@ const roadmapItems = [
 export const metadata: Metadata = createPageMetadata({
   title: "Roadmap",
   description:
-    "See what is available now, in development, and planned for Tell Their Stories.",
+    "See what is available now, in development, and planned for Discover Their Stories.",
   path: "/roadmap",
 });
 
@@ -161,7 +161,7 @@ export default function RoadmapPage() {
               We&apos;d love to hear what would help your family history research.
             </p>
             <a 
-              href="mailto:features@telltheirstories.app"
+              href="mailto:features@discovertheirstories.com"
               className="inline-flex items-center gap-2 text-amber-700 font-medium hover:underline"
             >
               Send us your ideas

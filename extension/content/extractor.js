@@ -359,4 +359,4 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-console.log("Tell Their Stories Content Script loaded");
+console.log("Discover Their Stories Content Script loaded");

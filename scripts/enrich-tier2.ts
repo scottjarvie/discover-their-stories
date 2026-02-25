@@ -118,6 +118,7 @@ async function enrichPerson(
           try {
             const citationId = await client.mutation(api.citations.create, {
               sourceId,
+              confidence: "medium",
               extractedText: citation,
               url: sourceUrl,
               accessDate: new Date().toISOString().slice(0, 10),
@@ -278,7 +279,7 @@ async function main() {
     await client.mutation(api.researchLog.upsert, {
       entityType: "other",
       entityId: "tier2-enrichment",
-      activityType: "tier2_sources_memories",
+      activityType: "tier2_sources",
       status: "done",
       summary: `Tier 2: ${processed} persons enriched — ${stats.sources} sources, ${stats.memories} memories, ${stats.notes} notes`,
       details: JSON.stringify(stats),

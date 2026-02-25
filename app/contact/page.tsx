@@ -12,17 +12,17 @@ export const metadata: Metadata = createPageMetadata({
 const contactItems = [
   {
     title: "General Support",
-    email: "support@telltheirstories.app",
+    email: "support@discovertheirstories.com",
     description: "Questions about setup, usage, and troubleshooting.",
   },
   {
     title: "Feature Requests",
-    email: "features@telltheirstories.app",
+    email: "features@discovertheirstories.com",
     description: "Suggestions for new tools, improvements, and workflows.",
   },
   {
     title: "Privacy Questions",
-    email: "privacy@telltheirstories.app",
+    email: "privacy@discovertheirstories.com",
     description: "Questions about local storage, processing, or data handling.",
   },
 ];

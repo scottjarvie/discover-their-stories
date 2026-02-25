@@ -24,7 +24,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "About",
   description:
-    "Learn the mission behind Tell Their Stories and the principles guiding this family history platform.",
+    "Learn the mission behind Discover Their Stories and the principles guiding this family history platform.",
   path: "/about",
 });
 
@@ -60,7 +60,7 @@ export default function AboutPage() {
           {/* Header */}
           <div className="text-center mb-16">
             <h1 className="text-4xl sm:text-5xl font-bold text-stone-900 mb-6">
-              About Tell Their Stories
+              About Discover Their Stories
             </h1>
             <p className="text-xl text-stone-500">
               A different approach to family history tools
@@ -77,7 +77,7 @@ export default function AboutPage() {
                 the beginning.
               </p>
               <p className="text-stone-600 leading-relaxed">
-                <strong>Tell Their Stories</strong> picks up where the tree ends. We help you 
+                <strong>Discover Their Stories</strong> picks up where the tree ends. We help you 
                 go deeper into the research, understand the context of your ancestors&apos; lives, 
                 and transform that research into content your family will actually read and cherish.
               </p>
@@ -173,7 +173,7 @@ export default function AboutPage() {
           {/* Open Source Note */}
           <section className="text-center">
             <p className="text-stone-500">
-              Tell Their Stories is a personal project built with love for family history.
+              Discover Their Stories is a personal project built with love for family history.
             </p>
           </section>
         </div>

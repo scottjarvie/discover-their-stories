@@ -6,7 +6,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "Privacy Policy",
   description:
-    "Privacy policy for Tell Their Stories, including local storage behavior and AI processing controls.",
+    "Privacy policy for Discover Their Stories, including local storage behavior and AI processing controls.",
   path: "/privacy",
 });
 
@@ -22,7 +22,7 @@ export default function PrivacyPage() {
           <section className="mb-8 space-y-3">
             <h2 className="text-2xl font-semibold text-stone-900">Data Storage</h2>
             <p className="text-stone-600">
-              Tell Their Stories stores imported evidence packs and generated markdown documents on your local machine.
+              Discover Their Stories stores imported evidence packs and generated markdown documents on your local machine.
               By default, data is written into your project directory under `data/source-docs/`.
             </p>
           </section>
@@ -47,8 +47,8 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-semibold text-stone-900">Contact</h2>
             <p className="text-stone-600">
               Questions about this policy can be sent to{" "}
-              <a className="text-amber-700 hover:underline" href="mailto:privacy@telltheirstories.app">
-                privacy@telltheirstories.app
+              <a className="text-amber-700 hover:underline" href="mailto:privacy@discovertheirstories.com">
+                privacy@discovertheirstories.com
               </a>
               .
             </p>

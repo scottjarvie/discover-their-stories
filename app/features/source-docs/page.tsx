@@ -39,7 +39,7 @@ const steps = [
   {
     step: 3,
     title: "Import to App",
-    description: "The extracted data downloads as a JSON file. Import it into the Tell Their Stories app.",
+    description: "The extracted data downloads as a JSON file. Import it into the Discover Their Stories app.",
   },
   {
     step: 4,

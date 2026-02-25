@@ -5,7 +5,7 @@
  * https://www.familysearch.org/en/tree/person/details/KWCJ-4XD
  * 
  * It will extract all visible data from the DOM and output as JSON.
- * The JSON can be directly imported into the Tell Their Stories Convex database.
+ * The JSON can be directly imported into the Discover Their Stories Convex database.
  * 
  * Usage:
  * 1. Navigate to a FamilySearch person Details page

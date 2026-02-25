@@ -29,7 +29,7 @@ export function Footer() {
               <BookOpen className="w-5 h-5 text-white" />
             </div>
             <span className="font-semibold text-lg text-white">
-              Tell Their Stories
+              Discover Their Stories
             </span>
           </div>
 
@@ -57,7 +57,7 @@ export function Footer() {
 
           {/* Copyright */}
           <p className="text-sm">
-            © {new Date().getFullYear()} Tell Their Stories
+            © {new Date().getFullYear()} Discover Their Stories
           </p>
         </div>
       </div>

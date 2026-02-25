@@ -1,10 +1,10 @@
-# Tell Their Stories - Vision & Goals
+# Discover Their Stories - Vision & Goals
 
 *Last updated: 2026-02-02*
 
 ## The Big Picture
 
-**Tell Their Stories** isn't just genealogy software. It's about transforming family history from a names-and-dates collection exercise into a deep, meaningful connection with ancestors as *real people*.
+**Discover Their Stories** isn't just genealogy software. It's about transforming family history from a names-and-dates collection exercise into a deep, meaningful connection with ancestors as *real people*.
 
 ### Core Philosophy
 

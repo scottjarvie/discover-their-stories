@@ -43,7 +43,7 @@ export function Hero() {
 
         {/* Headline */}
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-stone-900 mb-6 tracking-tight">
-          Tell Their{" "}
+          Discover Their{" "}
           <span className="text-amber-700 relative">
             Stories
             <svg

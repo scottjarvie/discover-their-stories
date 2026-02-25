@@ -1,5 +1,5 @@
 /**
- * Root Layout - Tell Their Stories
+ * Root Layout - Discover Their Stories
  * 
  * Purpose: Main application layout wrapping all pages
  * 
@@ -19,6 +19,7 @@
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/sonner";
 import { defaultMetadata } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
@@ -43,6 +44,8 @@ export const metadata: Metadata = {
   },
 };
 
+const clerkPublishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -53,7 +56,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {clerkPublishableKey ? (
+          <ClerkProvider publishableKey={clerkPublishableKey}>{children}</ClerkProvider>
+        ) : (
+          children
+        )}
         <Toaster />
       </body>
     </html>

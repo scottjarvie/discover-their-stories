@@ -1,4 +1,4 @@
-# Tell Their Stories
+# Discover Their Stories
 
 [![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)](https://www.typescriptlang.org/)
@@ -7,11 +7,11 @@
 
 **A Family History AI Toolset** - Go beyond names and dates. Research deeply, tell stories, create content.
 
-![Tell Their Stories Homepage](https://img.shields.io/badge/Status-Active%20Development-brightgreen)
+![Discover Their Stories Homepage](https://img.shields.io/badge/Status-Active%20Development-brightgreen)
 
 ## 🌟 Overview
 
-Tell Their Stories is a platform for family historians who want to go beyond collecting names and dates. It transforms genealogical data into compelling narratives using AI assistance.
+Discover Their Stories is a platform for family historians who want to go beyond collecting names and dates. It transforms genealogical data into compelling narratives using AI assistance.
 
 ### Key Principles
 
@@ -57,8 +57,8 @@ Extract and document FamilySearch sources with AI-powered analysis. Creates two 
 
 ```bash
 # Clone the repository
-git clone https://github.com/scottjarvie/tell-their-stories.git
-cd tell-their-stories
+git clone https://github.com/scottjarvie/discover-their-stories.git
+cd discover-their-stories
 
 # Install dependencies
 pnpm install
@@ -82,7 +82,7 @@ The browser extension is located in the `/extension` folder:
 ## 📁 Project Structure
 
 ```
-tell-their-stories/
+discover-their-stories/
 ├── app/                    # Next.js App Router pages
 │   ├── app/               # App routes (dashboard, tools)
 │   ├── features/          # Feature marketing pages
@@ -295,4 +295,4 @@ Created by [@scottjarvie](https://github.com/scottjarvie)
 
 ---
 
-*Tell Their Stories - Because every ancestor has a story worth telling.*
+*Discover Their Stories - Because every ancestor has a story worth telling.*

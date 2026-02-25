@@ -4,7 +4,7 @@ When you're ready to start using Convex, follow these steps in order:
 
 ## Step 1: Initialize Convex Project
 ```bash
-cd ~/IDE/tell-their-stories
+cd ~/IDE/discover-their-stories
 npx convex init
 ```
 

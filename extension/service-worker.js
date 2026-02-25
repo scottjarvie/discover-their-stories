@@ -155,4 +155,4 @@ function broadcastState() {
   });
 }
 
-console.log("Tell Their Stories Service Worker loaded");
+console.log("Discover Their Stories Service Worker loaded");

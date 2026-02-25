@@ -80,7 +80,7 @@ const features = [
 export const metadata: Metadata = createPageMetadata({
   title: "Features",
   description:
-    "Explore the tools in Tell Their Stories, including Source Documentation and planned family history workflows.",
+    "Explore the tools in Discover Their Stories, including Source Documentation and planned family history workflows.",
   path: "/features",
 });
 
@@ -113,7 +113,7 @@ export default function FeaturesPage() {
           <div className="mt-16 text-center">
             <p className="text-stone-500">
               Have a feature request?{" "}
-              <a href="mailto:features@telltheirstories.app" className="text-amber-700 hover:underline">
+              <a href="mailto:features@discovertheirstories.com" className="text-amber-700 hover:underline">
                 Let us know
               </a>
             </p>

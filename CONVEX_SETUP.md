@@ -1,4 +1,4 @@
-# Convex Setup - Tell Their Stories
+# Convex Setup - Discover Their Stories
 
 ✅ **Convex has been installed and configured!**
 
@@ -64,7 +64,7 @@ Implemented the full database schema based on the Gramps genealogy model:
 
 ### 1. Initialize Convex Project
 ```bash
-cd ~/IDE/tell-their-stories
+cd ~/IDE/discover-their-stories
 npx convex init
 ```
 

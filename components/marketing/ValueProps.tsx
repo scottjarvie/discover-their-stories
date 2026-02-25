@@ -45,7 +45,7 @@ export function ValueProps() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-stone-900 mb-4">
-            Why Tell Their Stories?
+            Why Discover Their Stories?
           </h2>
           <p className="text-lg text-stone-500 max-w-2xl mx-auto">
             Built by genealogists, for genealogists. We understand what you need.

@@ -1,6 +1,6 @@
 # FamilySearch Data Extraction Scripts
 
-A set of browser console scripts and Node.js importers to extract structured genealogical data from FamilySearch.org and import it into the Tell Their Stories Convex database.
+A set of browser console scripts and Node.js importers to extract structured genealogical data from FamilySearch.org and import it into the Discover Their Stories Convex database.
 
 ## 🎯 Purpose
 
@@ -63,7 +63,7 @@ These scripts automate the tedious process of manually copying data from FamilyS
 ### Step 3: Import into Convex
 
 ```bash
-cd ~/IDE/tell-their-stories
+cd ~/IDE/discover-their-stories
 
 # Import person data
 npx tsx scripts/fs-to-convex.ts person-KWCJ-4XD.json
@@ -225,7 +225,7 @@ The Node.js import script:
 - Or delete the person first if you want a fresh import
 
 ### "NEXT_PUBLIC_CONVEX_URL not found"
-- Make sure you're in the `tell-their-stories` directory
+- Make sure you're in the `discover-their-stories` directory
 - Check that `.env.local` exists and has the Convex URL
 - Run `npx convex dev` first to set up the environment
 
@@ -242,7 +242,7 @@ Potential improvements:
 
 ## 📄 License
 
-Part of the Tell Their Stories project. For internal use.
+Part of the Discover Their Stories project. For internal use.
 
 ---
 

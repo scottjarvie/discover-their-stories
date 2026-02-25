@@ -42,7 +42,7 @@ export function MarketingNav() {
               <BookOpen className="w-5 h-5 text-white" />
             </div>
             <span className="font-semibold text-lg text-stone-900 hidden sm:block">
-              Tell Their Stories
+              Discover Their Stories
             </span>
           </Link>
 

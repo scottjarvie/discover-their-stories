@@ -24,7 +24,7 @@
 ### Import to Convex
 
 ```bash
-cd ~/IDE/tell-their-stories
+cd ~/IDE/discover-their-stories
 npx tsx scripts/fs-to-convex.ts person-KWCJ-4XD.json sources-KWCJ-4XD.json
 ```
 

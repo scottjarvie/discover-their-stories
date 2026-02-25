@@ -1,5 +1,5 @@
 /**
- * Homepage - Tell Their Stories
+ * Homepage - Discover Their Stories
  * 
  * Purpose: Marketing landing page for the platform
  * 
