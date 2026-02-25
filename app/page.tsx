@@ -34,15 +34,15 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "Home",
   description:
-    "Go beyond names and dates with AI-assisted family history research, documentation, and storytelling.",
+    "Discover ancestor stories with AI-powered research, context building, and narrative tools that go beyond names and dates.",
   path: "/",
 });
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen text-[#1d212a]">
       <MarketingNav />
-      <main>
+      <main className="overflow-x-hidden">
         <Hero />
         <FeatureShowcase />
         <ValueProps />

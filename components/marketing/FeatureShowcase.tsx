@@ -74,21 +74,39 @@ const features = [
 
 export function FeatureShowcase() {
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-stone-900 mb-4">
-            Our Tools
+    <section className="relative overflow-hidden py-24 sm:py-28">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,#ffffff8a_0%,transparent_50%),radial-gradient(circle_at_85%_0%,#d7c6a966_0%,transparent_45%)]" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-xs uppercase tracking-[0.24em] text-[#5f665f]">The Discover Stack</p>
+          <h2 className="mt-5 text-4xl leading-tight text-[#1d212a] sm:text-5xl" data-display="true">
+            Tools that turn research into a family story archive
           </h2>
-          <p className="text-lg text-stone-500 max-w-2xl mx-auto">
-            Purpose-built tools for family historians who want to do more than 
-            collect names and dates.
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-[#4e5a64]">
+            Discover Their Stories blends AI, evidence tracking, and writing workflows so your family
+            history can be rigorous and readable.
           </p>
         </div>
 
-        {/* Feature Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mx-auto mt-12 flex max-w-5xl flex-wrap items-center justify-center gap-4 rounded-2xl border border-[#b79f7a66] bg-[#efe4cdcc] px-5 py-4 shadow-[0_20px_35px_-34px_#111]">
+          <span className="rounded-full bg-[#234d5e] px-3 py-1 text-xs font-semibold tracking-[0.14em] text-[#f7f3e8]">
+            FIND
+          </span>
+          <span className="text-[#6d6249]">→</span>
+          <span className="rounded-full bg-[#9f5a2d] px-3 py-1 text-xs font-semibold tracking-[0.14em] text-[#f7f3e8]">
+            CONTEXTUALIZE
+          </span>
+          <span className="text-[#6d6249]">→</span>
+          <span className="rounded-full bg-[#476553] px-3 py-1 text-xs font-semibold tracking-[0.14em] text-[#f7f3e8]">
+            NARRATE
+          </span>
+          <span className="text-[#6d6249]">→</span>
+          <span className="rounded-full bg-[#35506a] px-3 py-1 text-xs font-semibold tracking-[0.14em] text-[#f7f3e8]">
+            PRESERVE
+          </span>
+        </div>
+
+        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
             <FeatureCard key={feature.title} {...feature} />
           ))}

@@ -4,13 +4,13 @@
  * Purpose: Main application layout wrapping all pages
  * 
  * Key Elements:
- * - Font configuration (Geist Sans/Mono)
+ * - Font configuration (Instrument Sans, Cormorant Garamond, IBM Plex Mono)
  * - Global CSS imports
  * - Toaster for notifications
  * - HTML lang and body setup
  * 
  * Dependencies:
- * - next/font/google (Geist fonts)
+ * - next/font/google (custom brand fonts)
  * - sonner (toast notifications)
  * - ./globals.css (global styles)
  * 
@@ -18,21 +18,28 @@
  */
 
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cormorant_Garamond, IBM_Plex_Mono, Instrument_Sans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/sonner";
 import { defaultMetadata } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const cormorantGaramond = Cormorant_Garamond({
+  variable: "--font-cormorant-garamond",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-ibm-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -54,7 +61,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${instrumentSans.variable} ${cormorantGaramond.variable} ${ibmPlexMono.variable} antialiased`}
       >
         {clerkPublishableKey ? (
           <ClerkProvider publishableKey={clerkPublishableKey}>{children}</ClerkProvider>

@@ -16,48 +16,48 @@
  */
 
 import Link from "next/link";
-import { BookOpen } from "lucide-react";
+import { Compass } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-stone-900 text-stone-400 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-amber-700 rounded-lg flex items-center justify-center">
-              <BookOpen className="w-5 h-5 text-white" />
+    <footer className="relative overflow-hidden border-t border-[#2c4f5d] bg-[#132b35] py-14 text-[#d9cdb5]">
+      <div className="absolute -right-20 -top-12 h-48 w-48 rounded-full bg-[#c57d3929] blur-3xl" />
+      <div className="absolute -left-20 bottom-0 h-48 w-48 rounded-full bg-[#4b765933] blur-3xl" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
+          <div className="flex items-center gap-3">
+            <div className="relative flex h-10 w-10 items-center justify-center rounded-full border border-[#f2d7af77] bg-[#f2d7af22]">
+              <Compass className="h-5 w-5 text-[#f2d7af]" />
             </div>
-            <span className="font-semibold text-lg text-white">
-              Discover Their Stories
-            </span>
+            <div>
+              <p className="text-xl text-[#fff6e5]" data-display="true">Discover Their Stories</p>
+              <p className="text-[11px] uppercase tracking-[0.22em] text-[#b8a987]">AI Heritage Studio</p>
+            </div>
           </div>
 
-          {/* Links */}
           <nav className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
-            <Link href="/features" className="hover:text-white transition-colors">
+            <Link href="/features" className="transition-colors hover:text-[#fff6e5]">
               Features
             </Link>
-            <Link href="/extension" className="hover:text-white transition-colors">
+            <Link href="/extension" className="transition-colors hover:text-[#fff6e5]">
               Extension
             </Link>
-            <Link href="/about" className="hover:text-white transition-colors">
+            <Link href="/about" className="transition-colors hover:text-[#fff6e5]">
               About
             </Link>
-            <Link href="/roadmap" className="hover:text-white transition-colors">
+            <Link href="/roadmap" className="transition-colors hover:text-[#fff6e5]">
               Roadmap
             </Link>
-            <Link href="/privacy" className="hover:text-white transition-colors">
+            <Link href="/privacy" className="transition-colors hover:text-[#fff6e5]">
               Privacy
             </Link>
-            <Link href="/contact" className="hover:text-white transition-colors">
+            <Link href="/contact" className="transition-colors hover:text-[#fff6e5]">
               Contact
             </Link>
           </nav>
 
-          {/* Copyright */}
-          <p className="text-sm">
-            © {new Date().getFullYear()} Discover Their Stories
+          <p className="text-sm text-[#b8a987]">
+            © {new Date().getFullYear()} Discover Their Stories. Built for stories that endure.
           </p>
         </div>
       </div>
