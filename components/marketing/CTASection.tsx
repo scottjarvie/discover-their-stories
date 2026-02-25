@@ -29,13 +29,13 @@ export function CTASection() {
       <div className="relative mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
         <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-[#f2d7af66] bg-[#f7f3e81a] px-4 py-2 text-sm text-[#f2e1c4]">
           <Sparkles className="h-4 w-4" />
-          The Next Chapter of Family History
+          Ready When You Are
         </div>
         <h2 className="mt-8 text-4xl leading-tight text-[#fff6e5] sm:text-5xl" data-display="true">
-          Move from names and dates to living stories
+          Start with one ancestor today
         </h2>
         <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-[#ecdeca] sm:text-xl">
-          Use AI to gather evidence, build context, and publish stories your family can carry forward.
+          Open the studio, gather evidence, and let AI help shape the story.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -60,7 +60,7 @@ export function CTASection() {
         </div>
 
         <p className="mt-8 text-sm text-[#e1d4bd]">
-          FamilySearch-ready • AI-assisted • Portable exports
+          Free to start • Export anytime
         </p>
       </div>
     </section>
